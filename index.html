@@ -3,10 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="dark" />
-<title>AgentAirDirect™️ AI Search Visibility Engine</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<title>AgentAirDirect™ | AI Search Visibility Engine</title>
+<meta name="description" content="AgentAirDirect helps businesses improve visibility across AI-powered search experiences." />
+<link rel="canonical" href="https://agentairdirect.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AgentAirDirect" />
+<meta property="og:title" content="AgentAirDirect | AI Search Visibility Engine" />
+<meta property="og:description" content="Improve your business visibility across AI-powered search experiences." />
+<meta property="og:url" content="https://agentairdirect.com/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="AgentAirDirect | AI Search Visibility Engine" />
+<meta name="twitter:description" content="Improve your business visibility across AI-powered search experiences." />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AgentAirDirect","url":"https://agentairdirect.com/","description":"AgentAirDirect helps businesses improve visibility across AI-powered search experiences."}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop stop-color='%2300f5d4'/%3E%3Cstop offset='1' stop-color='%237b2ff7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Cpath d='M32 10 53 50H11z' fill='url(%23g)'/%3E%3C/svg%3E" type="image/svg+xml" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest" defer></script>
@@ -36,36 +45,55 @@ tailwind.config = {
 };
 </script>
 <style>
+:root { --agentair-teal: #00f5d4; --agentair-purple: #7b2ff7; --agentair-amber: #b56f00; --agentair-black: #050505; }
 html { scroll-behavior: smooth; }
-body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-.glow-border { border: 1px solid rgba(0,212,255,0.15); box-shadow: 0 0 20px rgba(0,212,255,0.05); transition: all 0.3s ease; }
-.glow-border:hover { border-color: rgba(0,212,255,0.3); box-shadow: 0 0 30px rgba(0,212,255,0.1); }
-.glow-violet { border: 1px solid rgba(124,58,237,0.2); box-shadow: 0 0 20px rgba(124,58,237,0.06); transition: all 0.3s ease; }
-.glow-violet:hover { border-color: rgba(124,58,237,0.4); box-shadow: 0 0 30px rgba(124,58,237,0.12); }
-.glow-amber { border: 1px solid rgba(245,158,11,0.2); box-shadow: 0 0 20px rgba(245,158,11,0.06); transition: all 0.3s ease; }
-.glow-amber:hover { border-color: rgba(245,158,11,0.4); box-shadow: 0 0 30px rgba(245,158,11,0.12); }
-.gradient-text { background: linear-gradient(135deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.stat-pill { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08)); border: 1px solid rgba(0,212,255,0.2); }
-.btn-primary { background: linear-gradient(135deg, #00d4ff, #7c3aed); transition: all 0.3s ease; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.25); }
-.btn-ghost { border: 1px solid rgba(0,212,255,0.4); transition: all 0.3s ease; }
-.btn-ghost:hover { border-color: #00d4ff; background: rgba(0,212,255,0.08); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.15); }
-.card-hover { transition: all 0.3s ease; }
+body { background: var(--agentair-black); color: var(--agentair-teal); font-family: 'Inter', sans-serif; }
+h1, h2, h3, h4, h5, h6, .font-display, .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+.bg-base-900, .bg-base-800 { background-color: var(--agentair-black) !important; }
+.bg-electric-500, .bg-teal-500 { background-color: var(--agentair-teal) !important; }
+.bg-violet-500, .bg-rose-500, .bg-sky-500 { background-color: var(--agentair-purple) !important; }
+.bg-amber-500 { background-color: var(--agentair-amber) !important; }
+.text-surface-200, .text-surface-300, .text-surface-400, .text-electric-500, .text-teal-500 { color: var(--agentair-teal) !important; }
+.text-violet-500, .text-rose-500, .text-sky-500 { color: var(--agentair-purple) !important; }
+.text-amber-500 { color: var(--agentair-amber) !important; }
+.text-white { color: var(--agentair-black) !important; }
+.hover\:text-electric-500:hover, .hover\:text-electric-500\/80:hover { color: var(--agentair-teal) !important; }
+
+.glow-border { border: 1px solid rgba(0,245,212,.28); box-shadow: 0 0 20px rgba(0,245,212,.10); transition: all .3s ease; }
+.glow-border:hover { border-color: rgba(0,245,212,.6); box-shadow: 0 0 30px rgba(0,245,212,.22); }
+.glow-violet { border: 1px solid rgba(123,47,247,.32); box-shadow: 0 0 20px rgba(123,47,247,.12); transition: all .3s ease; }
+.glow-violet:hover { border-color: rgba(123,47,247,.65); box-shadow: 0 0 30px rgba(123,47,247,.25); }
+.glow-amber { border: 1px solid rgba(181,111,0,.42); box-shadow: 0 0 20px rgba(181,111,0,.12); transition: all .3s ease; }
+.glow-amber:hover { border-color: var(--agentair-amber); box-shadow: 0 0 30px rgba(181,111,0,.26); }
+.gradient-text { background: linear-gradient(135deg, var(--agentair-teal), var(--agentair-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-pill { background: linear-gradient(135deg, rgba(0,245,212,.12), rgba(123,47,247,.12)); border: 1px solid rgba(0,245,212,.34); }
+.btn-primary { background: linear-gradient(135deg, var(--agentair-teal), var(--agentair-purple)); box-shadow: 0 0 18px rgba(0,245,212,.2); transition: all .3s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,245,212,.34), 0 0 22px rgba(123,47,247,.28); }
+.btn-ghost { border: 1px solid rgba(0,245,212,.56); color: var(--agentair-teal); transition: all .3s ease; }
+.btn-ghost:hover { border-color: var(--agentair-teal); background: rgba(0,245,212,.1); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,245,212,.22); }
+.card-hover { transition: all .3s ease; }
 .card-hover:hover { transform: translateY(-3px); }
-.gradient-border-box { border: 1px solid transparent; background-image: linear-gradient(#0a0f1e, #0a0f1e), linear-gradient(135deg, #00d4ff, #7c3aed); background-origin: border-box; background-clip: padding-box, border-box; }
-.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); opacity: 0.07; animation: pulseGlow 8s ease-in-out infinite; }
-@keyframes pulseGlow { 0%, 100% { opacity: 0.05; transform: scale(1); } 50% { opacity: 0.1; transform: scale(1.15); } }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+.gradient-border-box { border: 1px solid transparent; background-image: linear-gradient(var(--agentair-black), var(--agentair-black)), linear-gradient(135deg, var(--agentair-teal), var(--agentair-purple)); background-origin: border-box; background-clip: padding-box, border-box; }
+.hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); opacity: .07; animation: pulseGlow 8s ease-in-out infinite; }
+@keyframes pulseGlow { 0%, 100% { opacity: .05; transform: scale(1); } 50% { opacity: .1; transform: scale(1.15); } }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease; }
 .faq-answer.open { max-height: 600px; }
-.faq-chevron { transition: transform 0.3s ease; }
+.faq-chevron { transition: transform .3s ease; }
 .faq-chevron.open { transform: rotate(180deg); }
-.engine-strip-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
-.engine-strip-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
-.mobile-menu { transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.engine-strip-card { background: rgba(0,245,212,.04); border: 1px solid rgba(0,245,212,.16); transition: all .3s ease; }
+.engine-strip-card:hover { background: rgba(123,47,247,.12); border-color: rgba(123,47,247,.44); }
+.mobile-menu { transform: translateY(-100%); transition: transform .35s cubic-bezier(.4,0,.2,1); }
 .mobile-menu.open { transform: translateY(0); }
 .pricing-featured { position: relative; }
-.pricing-featured::before { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; background: linear-gradient(135deg, #00d4ff, #7c3aed); z-index: -1; }
-.tm { font-size: 0.55em; vertical-align: super; line-height: 0; margin-left: 0.04em; }
+.pricing-featured::before { content: ''; position: absolute; inset: -1px; border-radius: .75rem; background: linear-gradient(135deg, var(--agentair-teal), var(--agentair-purple)); z-index: -1; }
+.tm { font-size: .55em; vertical-align: super; line-height: 0; margin-left: .04em; }
+
+#nav-header-a1b2 { background: rgba(5,5,5,.95) !important; border-bottom-color: rgba(0,245,212,.22) !important; }
+#how-it-works, #the-platform, #credibility-o5p6, #faq-q7r8, #footer-s9t0 { background: var(--agentair-black) !important; }
+#footer-s9t0 [style*="border-color"] { border-color: rgba(0,245,212,.18) !important; }
+[style*="background:#f97316"] { background: var(--agentair-amber) !important; }
+[style*="background:linear-gradient(135deg,#00d4ff,#7c3aed)"] { background: linear-gradient(135deg, var(--agentair-teal), var(--agentair-purple)) !important; }
 </style>
 </head>
 <body data-id="0" class="antialiased">
