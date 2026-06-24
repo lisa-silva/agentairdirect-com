@@ -684,7 +684,21 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
       <h2 data-id="315" class="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-white">Choose Your Coverage Level</h2>
     </div>
 
-    <div data-id="316" class="grid md:grid-cols-3 gap-5 lg:gap-6 mb-10">
+    <div data-id="316" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mb-10">
+      <!-- SINGLE BUSINESS AUDIT -->
+      <div class="glow-border rounded-xl p-6 bg-base-800/30 card-hover flex flex-col">
+        <div class="stat-pill rounded-full px-3 py-1 inline-block self-start mb-4">
+          <span class="font-display text-[10px] font-semibold tracking-widest text-electric-500">SINGLE BUSINESS AUDIT</span>
+        </div>
+        <h3 class="font-display font-bold text-white text-xl mb-1">Single Business AI Search Visibility Audit</h3>
+        <div class="flex items-baseline gap-1 mb-5">
+          <span class="font-display font-[900] text-3xl text-white">$1,500 USD</span>
+        </div>
+        <p class="text-surface-400 text-sm mb-5">One-time payment</p>
+        <p class="text-surface-300 text-sm leading-relaxed mb-8 flex-1">A complete AI Search Visibility Audit for one business. Includes a Signal Audit&trade;, AI search readiness review, Schema Intelligence, Local Intent &amp; Freshness analysis, Website Trust &amp; Readiness Review, a plain-English findings report, and a prioritized Critical Fix Plan.</p>
+        <a id="single-business-audit-checkout" class="btn-ghost text-electric-500 font-bold px-6 py-3 rounded-lg text-sm text-center block">Start Your Audit</a>
+      </div>
+
       <!-- STARTER -->
       <div data-id="317" class="glow-border rounded-xl p-6 bg-base-800/30 card-hover flex flex-col">
         <div data-id="318" class="stat-pill rounded-full px-3 py-1 inline-block self-start mb-4">
@@ -704,7 +718,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
           <li data-id="335" class="flex items-start gap-2 text-sm text-surface-200"><i data-id="336" data-lucide="check" class="w-4 h-4 text-teal-500 shrink-0 mt-0.5"></i>Critical Fix Plan</li>
           <li data-id="335a" class="flex items-start gap-2 text-sm text-surface-200"><i data-id="336a" data-lucide="check" class="w-4 h-4 text-teal-500 shrink-0 mt-0.5"></i>All 9 Engines Covered</li>
         </ul>
-        <a data-id="337" href="https://YOUR_TIER_1_STRIPE_LINK_HERE" class="btn-ghost text-electric-500 font-bold px-6 py-3 rounded-lg text-sm text-center block">Get Started →</a>
+        <a data-id="337" href="https://buy.stripe.com/fZu5kvbH7bha7d31DOeUU0C" class="btn-ghost text-electric-500 font-bold px-6 py-3 rounded-lg text-sm text-center block">Get Started →</a>
       </div>
 
       <!-- PRO — FEATURED -->
@@ -731,7 +745,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
             <li data-id="359a" class="flex items-start gap-2 text-sm text-surface-200"><i data-id="360a" data-lucide="check" class="w-4 h-4 text-violet-500 shrink-0 mt-0.5"></i>Priority Turnaround</li>
             <li data-id="359b" class="flex items-start gap-2 text-sm text-surface-200"><i data-id="360b" data-lucide="check" class="w-4 h-4 text-teal-500 shrink-0 mt-0.5"></i>Portfolio-Level Reporting</li>
           </ul>
-          <a data-id="361" href="https://YOUR_TIER_2_STRIPE_LINK_HERE" class="btn-primary text-white font-bold px-6 py-3 rounded-lg text-sm text-center block">Get Pro →</a>
+          <a data-id="361" href="https://buy.stripe.com/8x24gr8uV4SM2WNgyIeUU0D" class="btn-primary text-white font-bold px-6 py-3 rounded-lg text-sm text-center block">Get Pro →</a>
         </div>
       </div>
 
@@ -936,6 +950,12 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
 
 <script>
   // Progressive enhancement — guard Lucide
+  const SINGLE_BUSINESS_CHECKOUT_URL = 'https://buy.stripe.com/3cI5kvh1rad6dBr3LWeUU0F';
+  var singleBusinessCheckout = document.getElementById('single-business-audit-checkout');
+  if (singleBusinessCheckout) {
+    singleBusinessCheckout.href = SINGLE_BUSINESS_CHECKOUT_URL;
+  }
+
   if (typeof lucide !== "undefined" && typeof lucide.createIcons === "function") {
     lucide.createIcons();
   }
