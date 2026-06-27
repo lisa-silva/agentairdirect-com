@@ -166,14 +166,14 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        base: { 900:'#0a0f1e', 800:'#0e1529', 700:'#131b36', 600:'#1a2342', 500:'#212c50' },
-        electric: { 500:'#00d4ff' },
-        violet: { 500:'#7c3aed' },
-        teal: { 500:'#00e5cc' },
-        amber: { 500:'#f59e0b' },
+        base: { 900:'#050817', 800:'#0D1838', 700:'#111F46', 600:'#09152F', 500:'#17113D' },
+        electric: { 500:'#00E6F6' },
+        violet: { 500:'#8D4DFF' },
+        teal: { 500:'#2CEEFF' },
+        amber: { 500:'#F7B42C' },
         rose: { 500:'#f43f5e' },
-        sky: { 500:'#0ea5e9' },
-        surface: { 200:'#e2e8f0', 300:'#94a3b8', 400:'#64748b' },
+        sky: { 500:'#168DFF' },
+        surface: { 200:'#AFC7E7', 300:'#AFC7E7', 400:'#7790B5' },
         success: '#22c55e',
         danger: '#ef4444'
       },
@@ -188,36 +188,37 @@ tailwind.config = {
 </script>
 <style>
 html { scroll-behavior: smooth; }
-body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
-.glow-border { border: 1px solid rgba(0,212,255,0.15); box-shadow: 0 0 20px rgba(0,212,255,0.05); transition: all 0.3s ease; }
-.glow-border:hover { border-color: rgba(0,212,255,0.3); box-shadow: 0 0 30px rgba(0,212,255,0.1); }
-.glow-violet { border: 1px solid rgba(124,58,237,0.2); box-shadow: 0 0 20px rgba(124,58,237,0.06); transition: all 0.3s ease; }
-.glow-violet:hover { border-color: rgba(124,58,237,0.4); box-shadow: 0 0 30px rgba(124,58,237,0.12); }
-.glow-amber { border: 1px solid rgba(245,158,11,0.2); box-shadow: 0 0 20px rgba(245,158,11,0.06); transition: all 0.3s ease; }
-.glow-amber:hover { border-color: rgba(245,158,11,0.4); box-shadow: 0 0 30px rgba(245,158,11,0.12); }
-.gradient-text { background: linear-gradient(135deg, #00d4ff, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.stat-pill { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(124,58,237,0.08)); border: 1px solid rgba(0,212,255,0.2); }
-.btn-primary { background: linear-gradient(135deg, #00d4ff, #7c3aed); transition: all 0.3s ease; }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.25); }
-.btn-ghost { border: 1px solid rgba(0,212,255,0.4); transition: all 0.3s ease; }
-.btn-ghost:hover { border-color: #00d4ff; background: rgba(0,212,255,0.08); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,255,0.15); }
+body { background: var(--bg-void); color: var(--text-primary); font-family: 'Inter', sans-serif; }
+.glow-border { border: 1px solid var(--border-subtle); transition: all 0.3s ease; }
+.glow-border:hover { border-color: var(--border-cyan); }
+.glow-violet { border: 1px solid var(--border-violet); transition: all 0.3s ease; }
+.glow-violet:hover { border-color: var(--soft-violet); }
+.glow-amber { border: 1px solid rgba(247,180,44,0.28); transition: all 0.3s ease; }
+.glow-amber:hover { border-color: rgba(247,180,44,0.5); }
+.gradient-text { background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-pill { background: linear-gradient(135deg, rgba(0,230,246,0.08), rgba(141,77,255,0.08)); border: 1px solid var(--border-subtle); }
+.btn-primary { background: var(--brand-gradient); transition: all 0.3s ease; }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { border: 1px solid var(--border-cyan); transition: all 0.3s ease; }
+.btn-ghost:hover { border-color: var(--border-violet); background: rgba(22,141,255,0.08); transform: translateY(-2px); }
 .card-hover { transition: all 0.3s ease; }
 .card-hover:hover { transform: translateY(-3px); }
-.gradient-border-box { border: 1px solid transparent; background-image: linear-gradient(#0a0f1e, #0a0f1e), linear-gradient(135deg, #00d4ff, #7c3aed); background-origin: border-box; background-clip: padding-box, border-box; }
+.gradient-border-box { border: 1px solid transparent; background-image: linear-gradient(var(--bg-panel), var(--bg-panel)), var(--brand-gradient); background-origin: border-box; background-clip: padding-box, border-box; }
 .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); opacity: 0.07; animation: pulseGlow 8s ease-in-out infinite; }
 @keyframes pulseGlow { 0%, 100% { opacity: 0.05; transform: scale(1); } 50% { opacity: 0.1; transform: scale(1.15); } }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
 .faq-answer.open { max-height: 600px; }
-.faq-icon { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; color: #94a3b8; font-size: 1.35rem; line-height: 1; transition: color 0.3s ease, transform 0.3s ease; }
-.faq-trigger[aria-expanded="true"] .faq-icon { color: #00d4ff; transform: rotate(90deg); }
-.engine-strip-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; }
-.engine-strip-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+.faq-icon { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; color: var(--text-muted); font-size: 1.35rem; line-height: 1; transition: color 0.3s ease, transform 0.3s ease; }
+.faq-trigger[aria-expanded="true"] .faq-icon { color: var(--text-cyan); transform: rotate(90deg); }
+.engine-strip-card { background: var(--bg-panel); border: 1px solid var(--border-subtle); transition: all 0.3s ease; }
+.engine-strip-card:hover { background: var(--bg-panel-raised); border-color: var(--border-cyan); }
 .mobile-menu { transform: translateY(-100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
 .mobile-menu.open { transform: translateY(0); }
 .pricing-featured { position: relative; }
-.pricing-featured::before { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; background: linear-gradient(135deg, #00d4ff, #7c3aed); z-index: -1; }
+.pricing-featured::before { content: ''; position: absolute; inset: -1px; border-radius: 0.75rem; background: var(--brand-gradient); z-index: -1; }
 .tm { font-size: 0.55em; vertical-align: super; line-height: 0; margin-left: 0.04em; }
 </style>
+<link rel="stylesheet" href="assets/theme.css" />
 </head>
 <body data-id="0" class="antialiased">
 <app-icon data-id="1" hidden data-icon="radar" data-palette="Blue"></app-icon>
@@ -274,7 +275,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
 
     <!-- Main headline -->
     <h1 data-id="37" class="font-display font-[900] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] mb-6 text-white">
-      Control How AI Describes Your Business.
+      Control How <span class="gradient-text">AI Describes</span> Your Business.
     </h1>
 
     <!-- Technical translation -->
@@ -571,17 +572,17 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
           <h3 data-id="221" class="font-display font-semibold text-white text-sm mb-2">AI Sales Engine™</h3>
           <p data-id="222" class="text-surface-400 text-xs leading-relaxed">Translates complex audit findings into plain-English any business owner understands.</p>
         </div>
-        <div data-id="223" class="glow-violet rounded-xl p-5 bg-base-800/30 card-hover">
+        <div data-id="223" class="glow-border rounded-xl p-5 bg-base-800/30 card-hover">
           <div data-id="224" class="flex items-center gap-3 mb-3">
-            <div data-id="225" class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,0.12);"><i data-id="226" data-lucide="shield-check" class="w-5 h-5 text-violet-500"></i></div>
+            <div data-id="225" class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(247,180,44,0.10);"><i data-id="226" data-lucide="shield-check" class="w-5 h-5 text-amber-500"></i></div>
             <span data-id="227" class="font-display font-semibold text-white text-xs">05</span>
           </div>
           <h3 data-id="228" class="font-display font-semibold text-white text-sm mb-2">ARCHON Compliance Shield™</h3>
           <p data-id="229" class="text-surface-400 text-xs leading-relaxed">GDPR, ADA/WCAG, privacy, HTTPS, ToS scoring. Legal defense + AI trust signal.</p>
         </div>
-        <div data-id="230" class="glow-violet rounded-xl p-5 bg-base-800/30 card-hover">
+        <div data-id="230" class="glow-border rounded-xl p-5 bg-base-800/30 card-hover">
           <div data-id="231" class="flex items-center gap-3 mb-3">
-            <div data-id="232" class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(124,58,237,0.12);"><i data-id="233" data-lucide="map-pin" class="w-5 h-5 text-violet-500"></i></div>
+            <div data-id="232" class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(22,141,255,0.12);"><i data-id="233" data-lucide="map-pin" class="w-5 h-5 text-electric-500"></i></div>
             <span data-id="234" class="font-display font-semibold text-white text-xs">06</span>
           </div>
           <h3 data-id="235" class="font-display font-semibold text-white text-sm mb-2">Local Intent + Freshness Engine</h3>
@@ -722,7 +723,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
         </div>
         <h3 class="font-display font-bold text-white text-xl mb-1">Single Business AI Search Visibility Audit</h3>
         <div class="flex items-baseline gap-1 mb-5">
-          <span class="font-display font-[900] text-3xl text-white">$1,500 USD</span>
+          <span class="font-display font-[900] text-3xl price-gradient">$1,500 USD</span>
         </div>
         <p class="text-surface-400 text-sm mb-5">One-time payment</p>
         <p class="text-surface-300 text-sm leading-relaxed mb-8 flex-1">A complete AI Search Visibility Audit for one business. Includes a Signal Audit&trade;, AI search readiness review, Schema Intelligence, Local Intent &amp; Freshness analysis, Website Trust &amp; Readiness Review, a plain-English findings report, and a prioritized Critical Fix Plan.</p>
@@ -736,7 +737,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
         </div>
         <h3 data-id="320" class="font-display font-bold text-white text-xl mb-1">Starter</h3>
         <div data-id="321" class="flex items-baseline gap-1 mb-5">
-          <span data-id="322" class="font-display font-[900] text-3xl text-white">$3,000</span>
+          <span data-id="322" class="font-display font-[900] text-3xl price-gradient">$3,000</span>
           <span data-id="323" class="text-surface-400 text-sm">/ month</span>
         </div>
         <ul data-id="324" class="space-y-2.5 mb-8 flex-1">
@@ -786,7 +787,7 @@ body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', sans-serif; }
         </div>
         <h3 data-id="365" class="font-display font-bold text-white text-xl mb-1">Stay Visible Enterprise</h3>
         <div data-id="366" class="flex items-baseline gap-1 mb-5">
-          <span data-id="367" class="font-display font-[900] text-3xl text-white">$12,000</span>
+          <span data-id="367" class="font-display font-[900] text-3xl price-gradient">$12,000</span>
           <span data-id="368" class="text-surface-400 text-sm">/ month</span>
         </div>
         <ul data-id="369" class="space-y-2.5 mb-8 flex-1">

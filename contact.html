@@ -15,17 +15,17 @@
             theme: {
                 extend: {
                     colors: {
-                        base: '#0a0f1e',
-                        'base-alt': '#0e1529',
-                        'base-deep': '#060c19',
-                        electric: '#00d4ff',
-                        violet: '#7c3aed',
-                        teal: '#00e5cc',
-                        amber: '#f59e0b',
+                        base: '#050817',
+                        'base-alt': '#0D1838',
+                        'base-deep': '#09152F',
+                        electric: '#00E6F6',
+                        violet: '#8D4DFF',
+                        teal: '#2CEEFF',
+                        amber: '#F7B42C',
                         rose: '#f43f5e',
-                        'surface-100': '#e2e8f0',
-                        'surface-300': '#94a3b8',
-                        'surface-400': '#64748b',
+                        'surface-100': '#EAF7FF',
+                        'surface-300': '#AFC7E7',
+                        'surface-400': '#7790B5',
                     },
                     fontFamily: {
                         inter: ['Inter', 'system-ui', 'sans-serif'],
@@ -37,30 +37,26 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        body { background: #0a0f1e; color: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; }
+        body { background: var(--bg-void); color: var(--text-primary); font-family: 'Inter', system-ui, sans-serif; }
 
         .glow-border {
-            border: 1px solid rgba(0,212,255,0.15);
-            box-shadow: 0 0 20px rgba(0,212,255,0.05);
+            border: 1px solid var(--border-subtle);
             transition: all 0.3s ease;
         }
         .glow-border:hover {
-            border-color: rgba(0,212,255,0.3);
-            box-shadow: 0 0 30px rgba(0,212,255,0.1);
+            border-color: var(--border-cyan);
         }
 
         .glow-violet {
-            border: 1px solid rgba(124,58,237,0.2);
-            box-shadow: 0 0 20px rgba(124,58,237,0.06);
+            border: 1px solid var(--border-violet);
             transition: all 0.3s ease;
         }
         .glow-violet:hover {
-            border-color: rgba(124,58,237,0.4);
-            box-shadow: 0 0 30px rgba(124,58,237,0.12);
+            border-color: var(--soft-violet);
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -71,8 +67,7 @@
             transition: all 0.35s ease;
         }
         .plan-card.selected {
-            border-color: rgba(0,212,255,0.6) !important;
-            box-shadow: 0 0 40px rgba(0,212,255,0.15) !important;
+            border-color: var(--border-violet) !important;
         }
         .plan-card .plan-check {
             opacity: 0;
@@ -83,9 +78,9 @@
         }
 
         .form-input {
-            background: rgba(14,21,41,0.8);
-            border: 1px solid rgba(0,212,255,0.15);
-            color: #e2e8f0;
+            background: rgba(13,24,56,0.88);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
             border-radius: 8px;
             padding: 12px 16px;
             width: 100%;
@@ -95,20 +90,20 @@
             outline: none;
         }
         .form-input:focus {
-            border-color: rgba(0,212,255,0.4);
-            box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+            border-color: var(--border-cyan);
+            box-shadow: 0 0 0 3px rgba(0,230,246,0.1);
         }
         .form-input.error {
             border-color: rgba(244,63,94,0.6);
             box-shadow: 0 0 0 3px rgba(244,63,94,0.1);
         }
         .form-input option {
-            background: #0e1529;
-            color: #e2e8f0;
+            background: var(--bg-panel);
+            color: var(--text-primary);
         }
 
         .gradient-btn {
-            background: linear-gradient(135deg, #00d4ff, #7c3aed);
+            background: var(--brand-gradient);
             transition: all 0.3s ease;
         }
         .gradient-btn:hover {
@@ -117,12 +112,12 @@
         }
 
         .trust-pill {
-            background: rgba(0,212,255,0.06);
-            border: 1px solid rgba(0,212,255,0.12);
+            background: rgba(0,230,246,0.06);
+            border: 1px solid var(--border-subtle);
             padding: 6px 14px;
             border-radius: 9999px;
             font-size: 0.75rem;
-            color: #94a3b8;
+            color: var(--text-secondary);
             white-space: nowrap;
         }
 
@@ -147,6 +142,7 @@
             animation: checkPop 0.3s ease forwards;
         }
     </style>
+    <link rel="stylesheet" href="assets/theme.css" />
 </head>
 <body data-id="0" class="min-h-screen font-inter antialiased">
     <app-icon data-id="1" hidden data-icon="send" data-palette="Blue"></app-icon>

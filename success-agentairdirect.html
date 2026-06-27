@@ -24,17 +24,18 @@
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 20px; }
+  body { background: var(--bg-void); color: var(--text-primary); font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 20px; }
   .container { max-width: 600px; }
   .check { font-size: 64px; margin-bottom: 24px; }
-  h1 { font-size: 2.2rem; color: #00f5d4; margin-bottom: 16px; }
-  p { font-size: 1.1rem; color: #aaa; line-height: 1.7; margin-bottom: 12px; }
-  .highlight { color: #fff; font-weight: 600; }
-  .back { display: inline-block; margin-top: 32px; color: #00f5d4; text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid #00f5d4; padding-bottom: 2px; }
+  h1 { font-size: 2.2rem; color: var(--text-cyan); margin-bottom: 16px; }
+  p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px; }
+  .highlight { color: var(--text-primary); font-weight: 600; }
+  .back { display: inline-block; margin-top: 32px; color: var(--text-cyan); text-decoration: none; font-size: 0.95rem; border-bottom: 1px solid var(--cyan); padding-bottom: 2px; }
 </style>
+<link rel="stylesheet" href="assets/theme.css" />
 </head>
 
-<body>
+<body class="success-page">
   <div class="container">
     <div class="check">&#10003;</div>
     <h1>You're in.</h1>
@@ -42,8 +43,8 @@
     <p>Your order has been received. <span class="highlight">Your AI Search Visibility implementation begins immediately.</span></p>
     <p>Expect your initial deliverables within 48 hours. A confirmation email is on its way, and we’ll reach out shortly with next steps.</p>
 
-    <p style="margin-top: 24px; color: #666; font-size: 0.9rem;">
-      Questions? Email us at <span style="color: #00f5d4;">hello@agentairdirect.com</span>
+    <p style="margin-top: 24px; color: var(--text-muted); font-size: 0.9rem;">
+      Questions? Email us at <span style="color: var(--text-cyan);">hello@agentairdirect.com</span>
     </p>
 
     <a href="https://agentairdirect.com" class="back">Back to AgentAirDirect™️ AI Search Visibility Engine</a>
