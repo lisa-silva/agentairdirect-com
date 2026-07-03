@@ -372,24 +372,35 @@ body { background: var(--bg-void); color: var(--text-primary); font-family: 'Int
       <p class="font-display font-semibold text-sm" style="color:#00f5d4;">That is how we knew the schema worked.</p>
     </div>
 
-    <!-- PIZZA CASAMIA CARD — full width -->
+    <!-- PIZZA CASAMIA CARD — two column on desktop -->
     <div class="rounded-xl p-6 md:p-8 mb-14" style="background:#111;border:1px solid rgba(249,115,22,0.3);box-shadow:0 0 24px rgba(249,115,22,0.07);">
-      <div class="mb-5">
-        <span class="font-display text-xs font-bold tracking-widest" style="color:#f97316;">REAL BUSINESS — SAME PROBLEM</span>
-      </div>
-      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
-        <div>
-          <p class="font-display font-bold text-white text-lg md:text-xl mb-1">Pizza Casamia</p>
-          <p class="text-sm" style="color:#94a3b8;">San Jose, CA</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- LEFT COLUMN: Perplexity screenshot -->
+        <div class="flex flex-col">
+          <span class="font-display text-xs font-bold tracking-widest mb-3" style="color:#7b2ff7;">PERPLEXITY FOUND THEM</span>
+          <img src="images/proof-pizza-perplexity.jpg" alt="Perplexity search result for Pizza Casamia" class="w-full rounded-lg mb-3" style="border:1px solid rgba(123,47,247,0.25);">
+          <p class="text-xs italic leading-relaxed" style="color:#94a3b8;">Perplexity knew Pizza Casamia existed. But couldn't tell customers their hours, phone number, or how to order.</p>
         </div>
-        <div class="flex items-end gap-3 shrink-0">
-          <span class="font-display font-[900] leading-none" style="font-size:clamp(2.25rem,6vw,3.5rem);color:#ef4444;">8/100</span>
-          <span class="font-display font-bold text-sm px-2.5 py-1 rounded-md mb-0.5" style="background:#ef4444;color:#fff;">F</span>
+        <!-- RIGHT COLUMN: audit score and details -->
+        <div class="flex flex-col">
+          <div class="mb-5">
+            <span class="font-display text-xs font-bold tracking-widest" style="color:#f97316;">REAL BUSINESS — SAME PROBLEM</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
+            <div>
+              <p class="font-display font-bold text-white text-lg md:text-xl mb-1">Pizza Casamia</p>
+              <p class="text-sm" style="color:#94a3b8;">San Jose, CA</p>
+            </div>
+            <div class="flex items-end gap-3 shrink-0">
+              <span class="font-display font-[900] leading-none" style="font-size:clamp(2.25rem,6vw,3.5rem);color:#ef4444;">8/100</span>
+              <span class="font-display font-bold text-sm px-2.5 py-1 rounded-md mb-0.5" style="background:#ef4444;color:#fff;">F</span>
+            </div>
+          </div>
+          <blockquote class="border-l-2 pl-5 mb-5 italic text-sm leading-relaxed" style="border-color:rgba(249,115,22,0.4);color:#94a3b8;">"AI systems may be able to identify the business, but the website currently provides incomplete or inconsistent signals for services, credentials, trust, structured data, freshness, and customer action paths."</blockquote>
+          <p class="font-display font-semibold text-sm mb-2" style="color:#00f5d4;">AI found them. But couldn't finish the job.</p>
+          <p class="text-xs" style="color:#94a3b8;">No hours. No menu. No way to order.</p>
         </div>
       </div>
-      <blockquote class="border-l-2 pl-5 mb-5 italic text-sm leading-relaxed" style="border-color:rgba(249,115,22,0.4);color:#94a3b8;">"AI systems may be able to identify the business, but the website currently provides incomplete or inconsistent signals for services, credentials, trust, structured data, freshness, and customer action paths."</blockquote>
-      <p class="font-display font-semibold text-sm mb-2" style="color:#00f5d4;">AI found them. But couldn't finish the job.</p>
-      <p class="text-xs" style="color:#94a3b8;">No hours. No menu. No way to order.</p>
     </div>
 
     <!-- SEMRUSH COMPETITIVE AUDIT CARD — full width -->
