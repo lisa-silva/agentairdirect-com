@@ -4,133 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="description" content="Validate an online ordering destination and generate a safe, installable Order Online button for your website.">
-  <title>Order Online Button Generator | AgentAirDirect™</title>
+  <meta name="description" content="Module 11 — Order Online Button Generator. Detects ordering and checkout links on a business website, validates the destination and flow, and generates an installable Order Online button that customers and AI agents can trust.">
+  <title>Order Online Button Generator — Module 11 | AgentAirDirect™</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/theme.css">
   <style>
     * { box-sizing: border-box; }
-    :root { --ok:#35e19a; --warn:#f7b42c; --bad:#ff6079; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; min-height:100vh; font-family:Inter, sans-serif; }
-    button,input,select { font:inherit; }
-    a { color:inherit; text-decoration:none; }
-    .mono { font-family:"JetBrains Mono", monospace; }
-    .wrap { width:min(1180px, calc(100% - 40px)); margin-inline:auto; }
-    .nav { position:sticky; top:0; z-index:20; border-bottom:1px solid var(--border-subtle); background:rgba(5,8,23,.86); backdrop-filter:blur(18px); }
-    .nav-inner { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { display:flex; align-items:center; gap:11px; font:800 15px/1 "JetBrains Mono", monospace; letter-spacing:-.04em; }
-    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--border-cyan); border-radius:10px; background:linear-gradient(145deg,rgba(0,230,246,.14),rgba(141,77,255,.16)); color:var(--cyan); }
-    .brand-mark svg { width:19px; }
-    .gradient-text { background:var(--brand-gradient); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .nav-links { display:flex; align-items:center; gap:24px; color:var(--text-secondary); font-size:14px; font-weight:600; }
-    .nav-links a:hover { color:var(--text-cyan); }
-    .nav-cta { padding:10px 15px; border:1px solid var(--border-cyan); border-radius:9px; color:var(--text-cyan)!important; background:rgba(0,230,246,.06); }
-    .hero { padding:76px 0 44px; text-align:center; position:relative; overflow:hidden; }
-    .hero:before { content:""; position:absolute; width:700px; height:420px; top:-220px; left:50%; transform:translateX(-50%); background:radial-gradient(ellipse,rgba(0,230,246,.17),rgba(141,77,255,.08) 42%,transparent 70%); pointer-events:none; }
-    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid var(--border-subtle); border-radius:999px; color:var(--text-cyan); background:rgba(13,24,56,.72); font:700 11px/1 "JetBrains Mono",monospace; letter-spacing:.12em; text-transform:uppercase; }
-    .eyebrow i { width:6px; height:6px; border-radius:50%; background:var(--ok); box-shadow:0 0 10px var(--ok); }
-    h1 { margin:22px auto 16px; max-width:850px; color:var(--text-primary); font:800 clamp(38px,6vw,68px)/1.04 "JetBrains Mono",monospace; letter-spacing:-.065em; }
-    .hero p { max-width:700px; margin:0 auto; color:var(--text-secondary); font-size:clamp(16px,2vw,19px); line-height:1.65; }
-    .hero-points { display:flex; justify-content:center; flex-wrap:wrap; gap:12px 22px; margin-top:26px; color:var(--text-muted); font-size:13px; }
-    .hero-points span { display:flex; align-items:center; gap:7px; }
-    .hero-points svg { width:15px; color:var(--text-cyan); }
-    .workspace { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr); gap:20px; padding:20px 0 82px; align-items:start; }
-    .panel { border:1px solid var(--border-subtle); border-radius:16px; overflow:hidden; background:linear-gradient(150deg,rgba(17,31,70,.9),rgba(9,21,47,.94)); box-shadow:0 22px 70px rgba(2,7,24,.28); }
-    .panel-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:22px 24px; border-bottom:1px solid var(--border-subtle); }
-    .step { color:var(--text-cyan); font:700 10px/1 "JetBrains Mono",monospace; letter-spacing:.12em; text-transform:uppercase; margin-bottom:9px; }
-    .panel h2 { margin:0; color:var(--text-primary); font:700 20px/1.3 "JetBrains Mono",monospace; letter-spacing:-.035em; }
-    .panel-head p { margin:7px 0 0; color:var(--text-muted); font-size:13px; line-height:1.5; }
-    .secure-chip { flex:none; display:flex; align-items:center; gap:6px; padding:7px 9px; border-radius:7px; color:var(--ok); background:rgba(53,225,154,.08); border:1px solid rgba(53,225,154,.2); font:700 10px/1 "JetBrains Mono",monospace; text-transform:uppercase; }
-    .secure-chip svg { width:13px; }
-    .panel-body { padding:24px; }
-    label { display:block; margin-bottom:9px; color:var(--text-secondary); font-size:13px; font-weight:700; }
-    .field-help { float:right; color:var(--text-muted); font-size:11px; font-weight:500; }
-    .url-field { position:relative; }
-    .url-field svg { position:absolute; left:14px; top:50%; transform:translateY(-50%); width:18px; color:var(--text-muted); pointer-events:none; }
-    .control { width:100%; height:50px; padding:0 14px; border:1px solid var(--border-subtle); border-radius:10px; outline:0; color:var(--text-primary); background:rgba(5,8,23,.55); transition:.2s; }
-    .url-field .control { padding-left:43px; }
-    .control::placeholder { color:#59739a; }
-    .control:focus { border-color:var(--border-cyan); box-shadow:0 0 0 3px rgba(0,230,246,.09); }
-    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
-    select.control { appearance:none; background-image:linear-gradient(45deg,transparent 50%,#7790b5 50%),linear-gradient(135deg,#7790b5 50%,transparent 50%); background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px; background-size:5px 5px; background-repeat:no-repeat; }
-    .color-row { display:flex; gap:8px; }
-    input[type=color] { flex:0 0 50px; padding:5px; cursor:pointer; }
-    .action { width:100%; height:52px; margin-top:20px; border:0; border-radius:10px; cursor:pointer; color:white; background:var(--brand-gradient); box-shadow:0 10px 28px rgba(22,141,255,.18); font:800 14px/1 "JetBrains Mono",monospace; display:flex; align-items:center; justify-content:center; gap:9px; transition:.2s; }
-    .action:hover { transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,230,246,.14); }
-    .action svg { width:18px; }
-    .fine-print { display:flex; gap:8px; margin:15px 2px 0; color:var(--text-muted); font-size:11px; line-height:1.5; }
-    .fine-print svg { flex:none; width:14px; margin-top:1px; }
-    .result-panel { position:sticky; top:88px; }
-    .empty { min-height:455px; display:grid; place-items:center; padding:40px 24px; text-align:center; }
-    .empty-icon { width:72px; height:72px; margin:0 auto 20px; display:grid; place-items:center; border-radius:50%; border:1px dashed var(--border-cyan); color:var(--text-cyan); background:rgba(0,230,246,.05); }
-    .empty-icon svg { width:30px; }
-    .empty h3 { margin:0 0 8px; color:var(--text-primary); font:700 17px/1.3 "JetBrains Mono",monospace; }
-    .empty p { margin:0; max-width:300px; color:var(--text-muted); font-size:13px; line-height:1.6; }
-    .results { display:none; }
-    .results.show { display:block; }
-    .score-wrap { display:flex; align-items:center; gap:18px; padding:20px 24px; border-bottom:1px solid var(--border-subtle); }
-    .score { --score:0; width:74px; height:74px; flex:none; display:grid; place-items:center; border-radius:50%; background:conic-gradient(var(--ok) calc(var(--score)*1%),rgba(119,144,181,.14) 0); position:relative; }
-    .score:after { content:""; position:absolute; inset:6px; border-radius:50%; background:#0b1733; }
-    .score b { position:relative; z-index:1; color:var(--text-primary); font:800 20px/1 "JetBrains Mono",monospace; }
-    .score-copy h3 { margin:0 0 5px; color:var(--text-primary); font:700 17px/1.3 "JetBrains Mono",monospace; }
-    .score-copy p { margin:0; color:var(--text-muted); font-size:12px; line-height:1.5; }
-    .checks { padding:15px 24px; border-bottom:1px solid var(--border-subtle); }
-    .check { display:grid; grid-template-columns:23px 1fr auto; align-items:center; gap:9px; padding:9px 0; color:var(--text-secondary); font-size:12px; }
-    .check-icon { width:19px; height:19px; display:grid; place-items:center; border-radius:50%; }
-    .check-icon svg { width:12px; }
-    .pass { color:var(--ok); background:rgba(53,225,154,.1); }
-    .warn { color:var(--warn); background:rgba(247,180,44,.1); }
-    .fail { color:var(--bad); background:rgba(255,96,121,.1); }
-    .check small { color:var(--text-muted); font:600 9px/1 "JetBrains Mono",monospace; text-transform:uppercase; }
-    .preview { padding:20px 24px; border-bottom:1px solid var(--border-subtle); }
-    .mini-label { margin-bottom:11px; color:var(--text-muted); font:700 9px/1 "JetBrains Mono",monospace; letter-spacing:.12em; text-transform:uppercase; }
-    .preview-box { min-height:100px; display:grid; place-items:center; border:1px dashed var(--border-subtle); border-radius:10px; background:rgba(5,8,23,.46); }
-    .generated-button { display:inline-flex; align-items:center; gap:9px; padding:14px 22px; color:#fff; font-weight:800; box-shadow:0 8px 24px rgba(0,0,0,.25); transition:.2s; }
-    .generated-button:hover { filter:brightness(1.08); transform:translateY(-1px); }
-    .generated-button svg { width:18px; }
-    .code-area { padding:20px 24px 24px; }
-    .code-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
-    .copy-btn { border:0; padding:7px 10px; border-radius:7px; cursor:pointer; color:var(--text-cyan); background:rgba(0,230,246,.08); font:700 10px/1 "JetBrains Mono",monospace; }
-    .copy-btn:disabled { cursor:not-allowed; color:var(--text-muted); opacity:.55; }
-    .withheld { padding:14px 18px; color:var(--bad); border:1px solid rgba(255,96,121,.22); border-radius:9px; background:rgba(255,96,121,.06); font:700 11px/1.5 "JetBrains Mono",monospace; text-align:center; }
-    pre { margin:0; padding:14px; border:1px solid var(--border-subtle); border-radius:9px; overflow:auto; color:#b9d5f5; background:#050817; font:500 10px/1.65 "JetBrains Mono",monospace; white-space:pre-wrap; word-break:break-all; max-height:145px; }
-    .trust { padding:0 0 80px; }
-    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border-subtle); border-radius:14px; overflow:hidden; background:rgba(13,24,56,.6); }
-    .trust-item { padding:23px; border-right:1px solid var(--border-subtle); }
-    .trust-item:last-child { border:0; }
-    .trust-item svg { width:22px; color:var(--text-cyan); margin-bottom:13px; }
-    .trust-item h3 { margin:0 0 6px; color:var(--text-primary); font:700 13px/1.3 "JetBrains Mono",monospace; }
-    .trust-item p { margin:0; color:var(--text-muted); font-size:11px; line-height:1.55; }
-    footer { padding:30px 0; border-top:1px solid var(--border-subtle); color:var(--text-muted); font-size:12px; }
-    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; }
-    .footer-links { display:flex; gap:18px; }
-    .footer-links a:hover { color:var(--text-cyan); }
-    .toast { position:fixed; right:22px; bottom:22px; z-index:30; transform:translateY(20px); opacity:0; pointer-events:none; padding:12px 16px; border:1px solid rgba(53,225,154,.3); border-radius:9px; color:var(--ok); background:#0d1d31; font-size:12px; font-weight:700; transition:.25s; }
-    .toast.show { transform:none; opacity:1; }
-    @media (max-width:850px) {
-      .nav-links a:not(.nav-cta) { display:none; }
-      .workspace { grid-template-columns:1fr; }
-      .result-panel { position:static; }
-      .trust-grid { grid-template-columns:1fr 1fr; }
-      .trust-item:nth-child(2) { border-right:0; }
-      .trust-item:nth-child(-n+2) { border-bottom:1px solid var(--border-subtle); }
-    }
-    @media (max-width:560px) {
-      .wrap { width:min(100% - 24px,1180px); }
-      .brand span:last-child { font-size:12px; }
-      .nav-cta { padding:9px 11px; font-size:12px; }
-      .hero { padding:54px 0 30px; }
-      h1 { font-size:36px; }
-      .form-grid { grid-template-columns:1fr; }
-      .panel-head,.panel-body,.score-wrap,.checks,.preview,.code-area { padding-left:18px; padding-right:18px; }
-      .secure-chip { display:none; }
-      .trust-grid { grid-template-columns:1fr; }
-      .trust-item { border-right:0; border-bottom:1px solid var(--border-subtle)!important; }
-      .trust-item:last-child { border-bottom:0!important; }
-      .footer-inner { flex-direction:column; align-items:flex-start; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; font-family: Inter, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: "JetBrains Mono", monospace; }
+    .wrap { width: min(860px, calc(100% - 40px)); margin-inline: auto; }
+    .gradient-text { background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--border-subtle); background: rgba(5,8,23,.86); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+    .nav-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; font: 800 15px/1 "JetBrains Mono", monospace; letter-spacing: -.04em; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--border-cyan); border-radius: 10px; background: linear-gradient(145deg,rgba(0,230,246,.14),rgba(141,77,255,.16)); color: var(--cyan); }
+    .brand-mark svg { width: 19px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--text-secondary); font-size: 14px; font-weight: 600; }
+    .nav-links a:hover { color: var(--text-cyan); }
+    .nav-cta { padding: 10px 15px; border: 1px solid var(--border-cyan); border-radius: 9px; color: var(--text-cyan) !important; background: rgba(0,230,246,.06); }
+
+    /* Module page */
+    .module-page { padding: 72px 0 96px; }
+    .module-tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border: 1px solid var(--border-subtle); border-radius: 999px; color: var(--text-cyan); background: rgba(0,230,246,.06); font: 700 10px/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 28px; }
+    .module-tag i { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); flex-shrink: 0; }
+    .module-number { color: var(--text-muted); font: 700 12px/1 "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    .module-title { margin: 0 0 18px; color: var(--text-primary); font: 800 clamp(32px,5vw,54px)/1.08 "JetBrains Mono", monospace; letter-spacing: -.055em; }
+    .module-oneliner { margin: 0 0 32px; color: var(--text-secondary); font-size: clamp(17px,2.2vw,21px); line-height: 1.55; font-weight: 500; }
+    .module-desc { margin: 0 0 44px; padding: 24px 28px; border: 1px solid var(--border-subtle); border-radius: 14px; background: rgba(13,24,56,.55); color: var(--text-secondary); font-size: 16px; line-height: 1.7; }
+    .bullets-heading { color: var(--text-muted); font: 700 10px/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+    .bullets { list-style: none; margin: 0 0 48px; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .bullets li { display: flex; align-items: flex-start; gap: 13px; color: var(--text-secondary); font-size: 15px; line-height: 1.55; }
+    .bullet-icon { flex-shrink: 0; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(0,230,246,.1); color: var(--text-cyan); margin-top: 1px; }
+    .bullet-icon svg { width: 11px; }
+    .outcome { padding: 28px 32px; border-radius: 14px; background: linear-gradient(135deg,rgba(0,230,246,.07),rgba(141,77,255,.07)); border: 1px solid rgba(0,230,246,.18); }
+    .outcome-label { color: var(--text-cyan); font: 700 10px/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+    .outcome-text { margin: 0; color: var(--text-primary); font: 700 clamp(16px,2vw,19px)/1.45 "JetBrains Mono", monospace; letter-spacing: -.025em; }
+
+    /* Footer */
+    footer { padding: 30px 0; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a:hover { color: var(--text-cyan); }
+
+    @media (max-width: 560px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .module-page { padding: 48px 0 72px; }
+      .module-desc { padding: 18px 20px; }
+      .outcome { padding: 20px 22px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -142,158 +69,64 @@
         <span class="gradient-text">AgentAirDirect™</span>
       </a>
       <div class="nav-links">
-        <a href="/#the-platform">Platform</a><a href="/#pricing">Pricing</a><a href="/contact">Support</a>
+        <a href="/#the-platform">Platform</a>
+        <a href="/#pricing">Pricing</a>
         <a class="nav-cta" href="/">Back to site</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <section class="hero">
+    <section class="module-page">
       <div class="wrap">
-        <div class="eyebrow"><i></i> Action Readiness Tool</div>
-        <h1>Turn discovery into <span class="gradient-text">real orders.</span></h1>
-        <p>Validate your ordering destination and generate an installable Order Online button that customers—and AI agents—can trust.</p>
-        <div class="hero-points">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>No signup required</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>Instant safety checks</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4L19 6"/></svg>Copy-and-paste install</span>
+        <div class="module-tag"><i></i> AgentAir Platform</div>
+        <p class="module-number">Module 11</p>
+        <h1 class="module-title">Order Online<br><span class="gradient-text">Button Generator</span></h1>
+        <p class="module-oneliner">Turn AI discovery into a real order.</p>
+        <div class="module-desc">
+          Detects ordering and checkout links on a business website, validates the destination and flow, and generates an installable Order Online button that customers and AI agents can trust.
         </div>
-      </div>
-    </section>
 
-    <section class="wrap workspace" aria-label="Order Online button generator">
-      <article class="panel">
-        <header class="panel-head">
-          <div><div class="step">Step 01 · Destination</div><h2>Where should customers order?</h2><p>Paste the exact menu, storefront, or checkout link.</p></div>
-          <span class="secure-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Local check</span>
-        </header>
-        <div class="panel-body">
-          <form id="generator-form" novalidate>
-            <label for="order-url">Ordering URL <span class="field-help">Required</span></label>
-            <div class="url-field">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-              <input class="control" id="order-url" type="url" inputmode="url" autocomplete="url" placeholder="https://orders.yourrestaurant.com/menu" required>
-            </div>
-            <div class="form-grid">
-              <div><label for="button-text">Button label</label><input class="control" id="button-text" value="Order Online" maxlength="36"></div>
-              <div><label for="button-style">Button shape</label><select class="control" id="button-style"><option value="8">Soft corners</option><option value="999">Pill</option><option value="0">Square</option></select></div>
-              <div><label for="button-color">Button color</label><div class="color-row"><input class="control" id="button-color" type="color" value="#168dff"><input class="control mono" id="color-text" value="#168DFF" maxlength="7" aria-label="Button color hex code"></div></div>
-              <div><label for="button-target">Open link</label><select class="control" id="button-target"><option value="_blank">In a new tab</option><option value="_self">In the same tab</option></select></div>
-            </div>
-            <button class="action" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>Validate &amp; generate</button>
-            <p class="fine-print"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>Your URL is checked in this browser and is not stored. Third-party checkout contents cannot be inspected when the provider blocks cross-origin access.</p>
-          </form>
+        <p class="bullets-heading">What this module does</p>
+        <ul class="bullets">
+          <li>
+            <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg></span>
+            Scans for ordering and checkout URLs
+          </li>
+          <li>
+            <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg></span>
+            Validates that the destination is first-party and functional
+          </li>
+          <li>
+            <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg></span>
+            Flags broken, redirected, or unsafe links
+          </li>
+          <li>
+            <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg></span>
+            Generates an installable Order Online button with AI agent metadata
+          </li>
+          <li>
+            <span class="bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg></span>
+            Enforces safe fallback if ordering cannot be verified
+          </li>
+        </ul>
+
+        <div class="outcome">
+          <p class="outcome-label">Outcome</p>
+          <p class="outcome-text">"Turns 'AI found your business' into<br>'customer placed an order.'"</p>
         </div>
-      </article>
-
-      <aside class="panel result-panel" aria-live="polite">
-        <div class="empty" id="empty-state"><div><div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13a8 8 0 0 1 15.6-2M20 11a8 8 0 0 1-15.6 2"/><path d="m18 6 2 5-5 1M6 18l-2-5 5-1"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Ready when you are</h3><p>Add an ordering URL to run safety checks and build your button.</p></div></div>
-        <div class="results" id="results">
-          <div class="score-wrap"><div class="score" id="score-ring"><b id="score-number">0</b></div><div class="score-copy"><div class="step">Action Readiness</div><h3 id="score-title">Review complete</h3><p id="score-summary"></p></div></div>
-          <div class="checks" id="checks"></div>
-          <div class="preview"><div class="mini-label">Live preview</div><div class="preview-box" id="button-preview"></div></div>
-          <div class="code-area"><div class="code-head"><div class="mini-label" style="margin:0">Install code</div><button class="copy-btn" id="copy-code" type="button">Copy code</button></div><pre id="install-code"></pre></div>
-        </div>
-      </aside>
-    </section>
-
-    <section class="wrap trust" aria-label="What the validator checks">
-      <div class="trust-grid">
-        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><h3>HTTPS protection</h3><p>Flags insecure destinations before they reach customers.</p></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg><h3>Destination clarity</h3><p>Checks URL structure and recognizes common ordering hosts.</p></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><h3>Clean install code</h3><p>Generates accessible HTML with safe link attributes.</p></div>
-        <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4.6 4.4 0 0 1 0-9 5.5 5.5 0 0 1 10.7-1.6A4 4 0 1 1 18 18Z"/><path d="m9 14 2 2 4-5"/></svg><h3>AI-ready action</h3><p>Uses explicit, descriptive text agents can understand.</p></div>
       </div>
     </section>
   </main>
 
-  <footer><div class="wrap footer-inner"><span>© 2026 AgentAirDirect™ · Powered by Golden River Connect™</span><div class="footer-links"><a href="/privacypolicy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/contact">Contact</a></div></div></footer>
-  <div class="toast" id="toast">Install code copied</div>
-
-  <script>
-    const form = document.getElementById('generator-form');
-    const urlInput = document.getElementById('order-url');
-    const labelInput = document.getElementById('button-text');
-    const colorInput = document.getElementById('button-color');
-    const colorText = document.getElementById('color-text');
-    const shapeInput = document.getElementById('button-style');
-    const targetInput = document.getElementById('button-target');
-    const knownHosts = ['toasttab.com','square.site','doordash.com','ubereats.com','chownow.com','clover.com','grubhub.com','olo.com','spoton.com','owner.com','shopify.com','order.online'];
-    let currentCode = '';
-
-    const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-    const normalizeUrl = raw => { const value = raw.trim(); return new URL(/^https?:\/\//i.test(value) ? value : 'https://' + value); };
-    const icon = (type) => type === 'pass' ? '<path d="m5 12 4 4L19 6"/>' : type === 'fail' ? '<path d="m7 7 10 10M17 7 7 17"/>' : '<path d="M12 8v5m0 3h.01"/>';
-
-    function addCheck(type, text, tag) {
-      return `<div class="check"><span class="check-icon ${type}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">${icon(type)}</svg></span><span>${escapeHtml(text)}</span><small>${escapeHtml(tag)}</small></div>`;
-    }
-
-    function build(url) {
-      const label = labelInput.value.trim() || 'Order Online';
-      const color = /^#[0-9a-f]{6}$/i.test(colorText.value) ? colorText.value.toUpperCase() : colorInput.value.toUpperCase();
-      const radius = shapeInput.value;
-      const target = targetInput.value;
-      const rel = target === '_blank' ? ' rel="noopener noreferrer"' : '';
-      const safeUrl = escapeHtml(url.href);
-      const safeLabel = escapeHtml(label);
-      currentCode = `<a href="${safeUrl}" target="${target}"${rel} aria-label="${safeLabel}" style="display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:${radius}px;background:${color};color:#fff;font:700 16px/1.2 Arial,sans-serif;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.18);">\n  <span aria-hidden="true">↗</span> ${safeLabel}\n</a>`;
-      document.getElementById('copy-code').disabled = false;
-      document.getElementById('install-code').textContent = currentCode;
-      document.getElementById('button-preview').innerHTML = `<a class="generated-button" href="${safeUrl}" target="${target}"${rel} style="background:${color};border-radius:${radius}px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 7H6M10 21a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm9 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>${safeLabel}</a>`;
-    }
-
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      let url;
-      try { url = normalizeUrl(urlInput.value); } catch { urlInput.setCustomValidity('Enter a valid ordering URL.'); urlInput.reportValidity(); return; }
-      urlInput.setCustomValidity('');
-      if (!['http:','https:'].includes(url.protocol)) { urlInput.setCustomValidity('Only web links are supported.'); urlInput.reportValidity(); return; }
-      const host = url.hostname.toLowerCase().replace(/^www\./,'');
-      const isHttps = url.protocol === 'https:';
-      const isKnown = knownHosts.some(item => host === item || host.endsWith('.' + item));
-      const hasOrderPath = /(order|menu|checkout|store|shop|restaurant)/i.test(url.pathname + url.hostname);
-      const hasCredentials = Boolean(url.username || url.password);
-      const suspicious = /^(\d{1,3}\.){3}\d{1,3}$/.test(host) || /[<>{}|\\^`]/.test(url.href) || hasCredentials;
-      const longQuery = url.search.length > 180;
-      let score = 40 + (isHttps ? 25 : 0) + (isKnown ? 15 : 0) + (hasOrderPath ? 12 : 0) + (!longQuery ? 8 : 0) - (suspicious ? 35 : 0);
-      score = Math.max(5, Math.min(100, score));
-      const checks = [
-        addCheck(isHttps ? 'pass':'fail', isHttps ? 'Encrypted HTTPS destination':'Insecure HTTP destination', isHttps ? 'Passed':'Action needed'),
-        addCheck(suspicious ? 'fail':'pass', suspicious ? 'Destination contains risky URL signals':'No risky URL signals detected', suspicious ? 'Blocked':'Passed'),
-        addCheck(isKnown ? 'pass':'warn', isKnown ? 'Recognized ordering platform':'Custom or unrecognized ordering host', isKnown ? 'Recognized':'Review'),
-        addCheck(hasOrderPath ? 'pass':'warn', hasOrderPath ? 'Ordering intent is clear in the URL':'Ordering intent is not explicit in the URL', hasOrderPath ? 'Passed':'Review'),
-        addCheck(longQuery ? 'warn':'pass', longQuery ? 'Long tracking query may expire':'Link is clean and portable', longQuery ? 'Review':'Passed')
-      ];
-      document.getElementById('checks').innerHTML = checks.join('');
-      document.getElementById('score-ring').style.setProperty('--score', score);
-      document.getElementById('score-number').textContent = score;
-      document.getElementById('score-title').textContent = suspicious || !isHttps ? 'Fix before publishing' : score >= 85 ? 'Ready to publish' : 'Publish after review';
-      document.getElementById('score-summary').textContent = isKnown ? `${host} recognized · automated URL checks passed` : `${host} · browser-safe URL checks complete`;
-      document.getElementById('empty-state').style.display = 'none';
-      document.getElementById('results').classList.add('show');
-      if (suspicious || !isHttps) {
-        currentCode = '';
-        document.getElementById('button-preview').innerHTML = '<div class="withheld">Button withheld until the unsafe destination is fixed.</div>';
-        document.getElementById('install-code').textContent = 'No install code generated for this destination.';
-        document.getElementById('copy-code').disabled = true;
-      } else {
-        build(url);
-      }
-      if (window.innerWidth < 851) document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
-    });
-
-    [labelInput,shapeInput,targetInput].forEach(el => el.addEventListener('input', () => { if (currentCode) try { build(normalizeUrl(urlInput.value)); } catch {} }));
-    colorInput.addEventListener('input', () => { colorText.value = colorInput.value.toUpperCase(); if (currentCode) build(normalizeUrl(urlInput.value)); });
-    colorText.addEventListener('input', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { colorInput.value = colorText.value; if (currentCode) build(normalizeUrl(urlInput.value)); } });
-    urlInput.addEventListener('input', () => urlInput.setCustomValidity(''));
-    document.getElementById('copy-code').addEventListener('click', async () => {
-      if (!currentCode) return;
-      try { await navigator.clipboard.writeText(currentCode); } catch { const area=document.createElement('textarea'); area.value=currentCode; document.body.appendChild(area); area.select(); document.execCommand('copy'); area.remove(); }
-      const toast=document.getElementById('toast'); toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1800);
-      document.getElementById('copy-code').textContent='Copied!'; setTimeout(()=>document.getElementById('copy-code').textContent='Copy code',1800);
-    });
-  </script>
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 AgentAirDirect™ · Powered by Golden River Connect™</span>
+      <div class="footer-links">
+        <a href="/privacypolicy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
