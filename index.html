@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="color-scheme" content="dark" />
+<meta name="color-scheme" content="light" />
 <!-- ① SoftwareApplication Schema — AgentAir --> 
 <script type="application/ld+json">
 {
@@ -1144,6 +1144,41 @@ body { background: var(--bg-void); color: var(--text-primary); font-family: 'Int
       }
     });
   });
+
+  // Luminescence active-link state
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#desktop-nav-c3d4 a[href^="#"], #mobile-menu-g7h8 a[href^="#"]'));
+  var navTargets = navLinks
+    .map(function(link) {
+      var id = link.getAttribute('href');
+      return id && id !== '#' ? document.querySelector(id) : null;
+    })
+    .filter(Boolean);
+
+  function setActiveNavLink(activeId) {
+    navLinks.forEach(function(link) {
+      var isActive = link.getAttribute('href') === '#' + activeId;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  if ('IntersectionObserver' in window && navTargets.length) {
+    var navObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          setActiveNavLink(entry.target.id);
+        }
+      });
+    }, { rootMargin: '-42% 0px -50% 0px', threshold: 0.01 });
+
+    navTargets.forEach(function(section) {
+      navObserver.observe(section);
+    });
+  }
 
   // FAQ accordion
   document.querySelectorAll('.faq-trigger').forEach(function(trigger) {
