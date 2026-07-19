@@ -1,0 +1,1 @@
+{"name":"agentairdirect-public-site","private":true,"scripts":{"test":"node --test","lint":"node --check assets/roi-calculator.js && node --check assets/roi-calculator-ui.js","build":"node scripts/verify-build.js"}}

@@ -220,6 +220,7 @@ body { background: var(--bg-void); color: var(--text-primary); font-family: 'Int
 .tm { font-size: 0.55em; vertical-align: super; line-height: 0; margin-left: 0.04em; }
 </style>
 <link rel="stylesheet" href="assets/theme.css" />
+<link rel="stylesheet" href="assets/roi-calculator.css" />
 </head>
 <body data-id="0" class="antialiased">
 <app-icon data-id="1" hidden data-icon="radar" data-palette="Blue"></app-icon>
@@ -1033,6 +1034,25 @@ body { background: var(--bg-void); color: var(--text-primary); font-family: 'Int
 </section>
 
 <!-- ═══════════ SECTION 10 — FINAL CTA ═══════════ -->
+<section id="roi-calculator" class="py-20 md:py-28 px-4 md:px-6" aria-labelledby="roi-heading">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12"><div class="inline-block stat-pill rounded-full px-4 py-1.5 mb-4"><span class="font-display text-xs font-semibold tracking-widest text-electric-500">EXPLORE THE OPPORTUNITY</span></div><h2 id="roi-heading" class="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-5">AI Visibility ROI Calculator</h2><p class="text-surface-300 text-sm md:text-base leading-relaxed">Estimate the potential revenue opportunity associated with stronger AI visibility and AI-referred customer conversions. Adjust the inputs to reflect your business.</p></div>
+    <div class="roi-shell">
+      <form class="roi-inputs" onsubmit="return false" aria-describedby="roi-methodology"><div class="roi-fields">
+        <div class="roi-field"><label for="roi-customers">Average Monthly Customers</label><input id="roi-customers" type="number" inputmode="numeric" min="0" step="1" value="90" aria-describedby="roi-customers-help"><span id="roi-customers-help" class="sr-only">Enter a whole number, zero or greater.</span></div>
+        <div class="roi-field"><label for="roi-ticket">Average Ticket Price</label><div class="roi-currency"><input id="roi-ticket" type="number" inputmode="decimal" min="0" step="0.01" value="350" aria-label="Average Ticket Price in US dollars"></div></div>
+        <div class="roi-field"><label id="roi-visibility-label" for="roi-visibility">Estimated Revenue Lift From Improved AI Visibility</label><div class="roi-range-line"><input id="roi-visibility" type="range" min="0" max="100" step="1" value="20"><div class="roi-percent"><input id="roi-visibility-value" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="20" aria-labelledby="roi-visibility-label"></div></div></div>
+        <div class="roi-field"><label id="roi-conversion-label" for="roi-conversion">Estimated Revenue Lift From AI-Referred Conversions</label><div class="roi-range-line"><input id="roi-conversion" type="range" min="0" max="100" step="1" value="12"><div class="roi-percent"><input id="roi-conversion-value" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="12" aria-labelledby="roi-conversion-label"></div></div></div>
+        <div class="roi-field"><label for="roi-investment">Estimated Investment</label><div class="roi-currency"><input id="roi-investment" type="number" inputmode="decimal" min="0" step="0.01" value="997" aria-label="Estimated Investment in US dollars"></div></div>
+      </div></form>
+      <dl class="roi-results" aria-live="polite" aria-atomic="true"><div class="roi-result"><dt>Monthly Revenue Lift</dt><dd id="roi-monthly">$10,080</dd></div><div class="roi-result"><dt>Annual Revenue Lift</dt><dd id="roi-annual">$120,960</dd></div><div class="roi-result"><dt id="roi-return-label">ROI on $997 Investment</dt><dd id="roi-return">12,032.4%</dd></div><div class="roi-result"><dt>Break-Even Timeline</dt><dd id="roi-break-even">0.1 months</dd></div></dl>
+      <p id="roi-assumptions" class="roi-summary">90 monthly customers × $350 average ticket. Estimated AI visibility revenue lift: +20%. Estimated AI-referred conversion revenue lift: +12%. Estimated investment: $997.</p>
+    </div>
+    <p id="roi-methodology" class="roi-disclosure">This scenario calculator applies two user-provided, additive revenue-lift assumptions to the business&rsquo;s estimated current monthly revenue. Results are projections, not measured attribution or guaranteed revenue. Actual outcomes depend on implementation, AI-engine discovery, customer behavior, market conditions, and post-installation performance.</p>
+    <details class="roi-method"><summary>How this estimate is calculated</summary><p>Monthly baseline revenue is monthly customers multiplied by average ticket price. The two lift percentages are added together, then applied to that baseline for the monthly lift. Annual lift is the monthly lift multiplied by 12. ROI subtracts the investment from annual lift, divides by the investment, and multiplies by 100. Break-even time divides the investment by monthly revenue lift.</p></details>
+  </div>
+</section>
+
 <section data-id="423" id="final-cta" class="py-20 md:py-28 px-4 md:px-6 bg-base-900 relative overflow-hidden">
   <div data-id="424" class="hero-glow bg-electric-500" style="top:30%;left:20%;"></div>
   <div data-id="425" class="hero-glow bg-violet-500" style="top:20%;right:15%;animation-delay:3s;"></div>
@@ -1105,6 +1125,8 @@ body { background: var(--bg-void); color: var(--text-primary); font-family: 'Int
   </div>
 </footer>
 
+<script src="assets/roi-calculator.js"></script>
+<script src="assets/roi-calculator-ui.js" defer></script>
 <script>
   // Progressive enhancement — guard Lucide
   const SINGLE_BUSINESS_CHECKOUT_URL = 'https://buy.stripe.com/3cI5kvh1rad6dBr3LWeUU0F';
