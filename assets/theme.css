@@ -217,14 +217,27 @@ section[style*="background: linear-gradient"] {
 #hero-k1l2 h1,
 #hero-k1l2 h1 span,
 #final-cta h2 {
-  color: var(--infra-lilac) !important;
-  -webkit-text-fill-color: var(--infra-lilac) !important;
+  color: #35145f !important;
+  -webkit-text-fill-color: #35145f !important;
   background: none !important;
+  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.32) !important;
 }
 
 #hero-k1l2 p,
 #final-cta p {
-  color: var(--soft-halo-grey) !important;
+  color: #292334 !important;
+}
+
+#hero-k1l2 .stat-pill span {
+  color: #075c70 !important;
+}
+
+#nav-header-a1b2 .gradient-text,
+#mobile-menu-g7h8 .gradient-text {
+  color: #35145f !important;
+  -webkit-text-fill-color: #35145f !important;
+  background: none !important;
+  text-shadow: none !important;
 }
 
 #hero-k1l2 .btn-primary,
