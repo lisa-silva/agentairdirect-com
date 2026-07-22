@@ -7,8 +7,8 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const theme = fs.readFileSync(path.join(root, 'assets', 'theme.css'), 'utf8');
 
-test('hero audit button uses the same pricing destination as Get Started', () => {
-  assert.match(html, /data-id="52" href="\/#pricing"[^>]*>Run a Signal Audit<\/a>/);
+test('hero pricing button uses the same pricing destination as Get Started', () => {
+  assert.match(html, /data-id="52" href="\/#pricing"[^>]*>View Pricing<\/a>/);
   assert.match(html, /data-id="13" href="\/#pricing"[^>]*>Get Started<\/a>/);
 });
 
