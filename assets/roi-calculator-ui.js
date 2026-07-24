@@ -13,10 +13,10 @@
     root.querySelector("#roi-conversion-value").value = result.conversionLift;
     root.querySelector("#roi-monthly").textContent = currency.format(result.monthlyRevenueLift);
     root.querySelector("#roi-annual").textContent = currency.format(result.annualRevenueLift);
-    root.querySelector("#roi-return-label").textContent = "ROI on " + currency.format(result.investment) + " Investment";
-    root.querySelector("#roi-return").textContent = result.roiPercentage === null ? "Not available." : number.format(result.roiPercentage) + "%";
-    root.querySelector("#roi-break-even").textContent = result.breakEvenMonths === null ? "Not projected." : number.format(result.breakEvenMonths) + " " + (result.breakEvenMonths === 1 ? "month" : "months");
-    root.querySelector("#roi-assumptions").textContent = customerNumber.format(result.customers) + " monthly customers × " + currency.format(result.ticket) + " average ticket. Estimated AI visibility revenue lift: +" + number.format(result.visibilityLift) + "%. Estimated AI-referred conversion revenue lift: +" + number.format(result.conversionLift) + "%. Estimated investment: " + currency.format(result.investment) + ".";
+    root.querySelector("#roi-return-label").textContent = result.investment > 0 ? "ROI on " + currency.format(result.investment) + " Investment" : "ROI on Your Investment";
+    root.querySelector("#roi-return").textContent = result.roiPercentage === null ? "Enter an amount" : number.format(result.roiPercentage) + "%";
+    root.querySelector("#roi-break-even").textContent = result.breakEvenMonths === null ? "Enter an amount" : number.format(result.breakEvenMonths) + " " + (result.breakEvenMonths === 1 ? "month" : "months");
+    root.querySelector("#roi-assumptions").textContent = customerNumber.format(result.customers) + " monthly customers × " + currency.format(result.ticket) + " average ticket. Estimated AI visibility revenue lift: +" + number.format(result.visibilityLift) + "%. Estimated AI-referred conversion revenue lift: +" + number.format(result.conversionLift) + "%." + (result.investment > 0 ? " Planned investment: " + currency.format(result.investment) + "." : " Add your own planned investment to estimate ROI.");
   }
   function normalize(field, options) { field.value = api.sanitizeNumber(field.value, options); render(); }
   Object.keys(fields).forEach(function (key) {
