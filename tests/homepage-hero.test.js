@@ -7,9 +7,9 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const theme = fs.readFileSync(path.join(root, 'assets', 'theme.css'), 'utf8');
 
-test('hero pricing button uses the same pricing destination as Get Started', () => {
-  assert.match(html, /data-id="52" href="\/#pricing"[^>]*>View Pricing<\/a>/);
-  assert.match(html, /data-id="13" href="\/#pricing"[^>]*>Get Started<\/a>/);
+test('hero inquiry button uses the same contact destination as the header', () => {
+  assert.match(html, /data-id="52" href="\/#contact"[^>]*>Request Information<\/a>/);
+  assert.match(html, /data-id="13" href="\/#contact"[^>]*>Request Information<\/a>/);
 });
 
 test('hero and navigation use explicit high-contrast foreground colors', () => {
