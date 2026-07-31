@@ -657,7 +657,7 @@ footer .text-surface-300 {
 
 footer a,
 footer .text-electric-500 {
-  color: var(--infra-lilac) !important;
+  color: #7654ad !important;
 }
 
 footer a:hover {
