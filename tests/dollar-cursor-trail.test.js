@@ -9,6 +9,7 @@ const script = fs.readFileSync(path.join(root, 'assets', 'dollar-cursor-trail.js
 const styles = fs.readFileSync(path.join(root, 'assets', 'dollar-cursor-trail.css'), 'utf8');
 const renderedPages = [
   'index.html',
+  'intel.html',
   'disclaimer.html',
   'privacypolicy.html',
   'refund.html',
