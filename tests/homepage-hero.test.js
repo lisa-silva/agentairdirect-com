@@ -44,8 +44,7 @@ test('homepage fragment links resolve to unique section IDs', () => {
   for (const match of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]), `Missing target for #${match[1]}`);
 });
 
-test('homepage publishes both approved phone numbers and removes the incorrect number', () => {
+test('homepage publishes only the approved phone number', () => {
   assert.match(html, /href="tel:\+14084256699"[^>]*>Call Lisa: \(408\) 425-6699<\/a>/);
-  assert.match(html, /href="tel:\+16696611140"[^>]*>Call Lisa: \(669\) 661-1140<\/a>/);
-  assert.doesNotMatch(html, /\+16696671140|\(669\) 667-1140/);
+  assert.doesNotMatch(html, /\+16696611140|\(669\) 661-1140/);
 });
