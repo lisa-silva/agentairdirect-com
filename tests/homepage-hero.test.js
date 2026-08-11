@@ -8,10 +8,9 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const theme = fs.readFileSync(path.join(root, 'assets', 'theme.css'), 'utf8');
 
 test('hero and navigation use the free audit calls to action', () => {
-  const auditUrl = 'https://agentair-suite-dcrsxgdbuubhvvdrwndupw.streamlit.app/audit';
-  assert.match(html, new RegExp(`data-id="52" href="${auditUrl}"[^>]*>Run Your Free AI Visibility Audit<\\/a>`));
+  assert.match(html, /data-id="52" href="#contact"[^>]*>Get Your Free AI Visibility Audit<\/a>/);
   assert.match(html, /data-id="53" href="#free-audit"[^>]*>See What’s in the Report<\/a>/);
-  assert.match(html, new RegExp(`data-id="13" href="${auditUrl}"[^>]*>Run Your Free Audit<\\/a>`));
+  assert.match(html, /data-id="13" href="#contact"[^>]*>Get Your Free Audit<\/a>/);
 });
 
 test('hero and navigation use explicit high-contrast foreground colors', () => {
@@ -46,7 +45,7 @@ test('homepage fragment links resolve to unique section IDs', () => {
   for (const match of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]), `Missing target for #${match[1]}`);
 });
 
-test('homepage publishes only the approved phone number', () => {
-  assert.match(html, /href="tel:\+14084256699"[^>]*>Call Lisa: \(408\) 425-6699<\/a>/);
-  assert.doesNotMatch(html, /\+16696611140|\(669\) 661-1140/);
+test('homepage does not publish a phone number', () => {
+  assert.doesNotMatch(html, /href=["']tel:/i);
+  assert.doesNotMatch(html, /\+14084256699|\(408\) 425-6699|\+16696611140|\(669\) 661-1140/);
 });

@@ -1,6 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),intel=fs.readFileSync(path.join(root,'intel.html'),'utf8');
-const auditDestination='https://agentair-suite-dcrsxgdbuubhvvdrwndupw.streamlit.app/audit';
-for(const marker of ['id="free-audit"','id="roi-calculator"','assets/roi-calculator.css','assets/roi-calculator.js','assets/roi-calculator-ui.js','assets/dollar-cursor-trail.css','assets/dollar-cursor-trail.js',auditDestination])if(!html.includes(marker))throw new Error(`Production page is missing ${marker}`);
+const auditDestination='#contact';
+for(const marker of ['id="free-audit"','id="contact"','id="roi-calculator"','assets/roi-calculator.css','assets/roi-calculator.js','assets/roi-calculator-ui.js','assets/dollar-cursor-trail.css','assets/dollar-cursor-trail.js',`href="${auditDestination}"`,`action="https://formsubmit.co/hello@agentairdirect.com"`,`value="New Free AI Visibility Audit Request"`])if(!html.includes(marker))throw new Error(`Production page is missing ${marker}`);
+if(/streamlit\.app/i.test(html))throw new Error('Production page must not link to the private Streamlit application.');
 for(const relative of ['assets/roi-calculator.css','assets/roi-calculator.js','assets/roi-calculator-ui.js','assets/dollar-cursor-trail.css','assets/dollar-cursor-trail.js'])if(!fs.existsSync(path.join(root,relative)))throw new Error(`Missing production asset: ${relative}`);
 for(const marker of ['id="perplexity-protocol"','id="chatgpt-protocol"','id="platforms"','assets/dollar-cursor-trail.js'])if(!intel.includes(marker))throw new Error(`Intelligence page is missing ${marker}`);
 if(/http-equiv="refresh"|window\.location\.replace/.test(intel))throw new Error('Intelligence page must not redirect away from its content.');
