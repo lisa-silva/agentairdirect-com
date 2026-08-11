@@ -4,6 +4,8 @@
   root.AgentAirROICalculator = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
+  var AI_REFERRED_CUSTOMER_UPLIFT = 0.20;
+  var CONVERSION_UPLIFT = 0.12;
   function sanitizeNumber(value, options) {
     var settings = options || {};
     var parsed = typeof value === "number" ? value : Number.parseFloat(String(value).replace(/[^0-9.-]/g, ""));
@@ -14,17 +16,14 @@
   function calculateROI(values) {
     var customers = sanitizeNumber(values && values.customers, { whole: true });
     var ticket = sanitizeNumber(values && values.ticket);
-    var visibilityLift = sanitizeNumber(values && values.visibilityLift, { max: 100 });
-    var conversionLift = sanitizeNumber(values && values.conversionLift, { max: 100 });
-    var investment = sanitizeNumber(values && values.investment);
     var baselineMonthlyRevenue = customers * ticket;
-    var combinedLiftPercentage = visibilityLift + conversionLift;
-    var monthlyRevenueLift = baselineMonthlyRevenue * (combinedLiftPercentage / 100);
+    var monthlyRevenueLift = baselineMonthlyRevenue * AI_REFERRED_CUSTOMER_UPLIFT * CONVERSION_UPLIFT;
     var annualRevenueLift = monthlyRevenueLift * 12;
-    return { customers: customers, ticket: ticket, visibilityLift: visibilityLift, conversionLift: conversionLift, investment: investment,
-      baselineMonthlyRevenue: baselineMonthlyRevenue, combinedLiftPercentage: combinedLiftPercentage, monthlyRevenueLift: monthlyRevenueLift,
-      annualRevenueLift: annualRevenueLift, roiPercentage: investment === 0 ? null : ((annualRevenueLift - investment) / investment) * 100,
-      breakEvenMonths: monthlyRevenueLift === 0 ? null : investment / monthlyRevenueLift };
+    return { customers: customers, ticket: ticket, visibilityLift: 20, conversionLift: 12,
+      baselineMonthlyRevenue: baselineMonthlyRevenue, monthlyRevenueLift: monthlyRevenueLift,
+      annualRevenueLift: annualRevenueLift };
   }
-  return { sanitizeNumber: sanitizeNumber, calculateROI: calculateROI };
+  return { sanitizeNumber: sanitizeNumber, calculateROI: calculateROI,
+    AI_REFERRED_CUSTOMER_UPLIFT: AI_REFERRED_CUSTOMER_UPLIFT,
+    CONVERSION_UPLIFT: CONVERSION_UPLIFT };
 });

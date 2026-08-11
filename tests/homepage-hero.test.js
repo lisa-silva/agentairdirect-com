@@ -7,10 +7,10 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const theme = fs.readFileSync(path.join(root, 'assets', 'theme.css'), 'utf8');
 
-test('hero and navigation use the approved AI Visibility calls to action', () => {
-  assert.match(html, /data-id="52" href="#information-gap"[^>]*>See What AI Understands<\/a>/);
-  assert.match(html, /data-id="53" href="#how-it-works"[^>]*>How Agent Air Direct Works<\/a>/);
-  assert.match(html, /data-id="13" href="\/#contact"[^>]*>Request an AI Visibility Assessment<\/a>/);
+test('hero and navigation use the free audit calls to action', () => {
+  assert.match(html, /data-id="52" href="#contact"[^>]*>Get Your Free AI Visibility Audit<\/a>/);
+  assert.match(html, /data-id="53" href="#free-audit"[^>]*>See What’s in the Report<\/a>/);
+  assert.match(html, /data-id="13" href="#contact"[^>]*>Get Your Free Audit<\/a>/);
 });
 
 test('hero and navigation use explicit high-contrast foreground colors', () => {
@@ -20,7 +20,8 @@ test('hero and navigation use explicit high-contrast foreground colors', () => {
 });
 
 test('homepage uses the approved narrative and removes superseded sections', () => {
-  assert.match(html, /Own How AI[\s\S]*Understands Your Business\./);
+  assert.match(html, /See How Visible Your Business Is[\s\S]*in AI Search\./);
+  assert.match(html, /id="free-audit"/);
   assert.match(html, /id="what-you-receive"/);
   assert.match(html, /id="future-readiness"/);
   assert.doesNotMatch(html, /id="who-its-for"|id="credibility-o5p6"|lisa-silva-profile\.png/);
