@@ -31,7 +31,7 @@ test('all prominent free-audit CTAs lead to the contact form', () => {
 });
 
 test('free-audit form keeps required fields, optional goals, and FormSubmit metadata', () => {
-  assert.match(html, /<form action="https:\/\/formsubmit\.co\/hello@agentairdirect\.com"[\s\S]*?aria-label="Request a free AI visibility audit">/);
+  assert.match(html, /<form action="https:\/\/formsubmit\.co\/hello@agentair\.io"[\s\S]*?aria-label="Request a free AI visibility audit">/);
   for (const name of ['name', 'email', 'business', 'website']) {
     assert.match(html, new RegExp(`<input[^>]*name="${name}"[^>]*required`));
   }
