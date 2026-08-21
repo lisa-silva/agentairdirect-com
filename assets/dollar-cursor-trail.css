@@ -1,0 +1,63 @@
+.dollar-cursor-trail {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: none !important;
+}
+
+.dollar-cursor-trail__particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  color: var(--dollar-color, #34d399);
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: var(--dollar-size, 12px);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  text-shadow:
+    0 0 4px rgba(52, 211, 153, 0.72),
+    0 0 10px rgba(163, 230, 53, 0.32);
+  transform-origin: center;
+  user-select: none;
+  will-change: transform, opacity;
+  pointer-events: none !important;
+  animation: dollar-cursor-particle var(--dollar-duration, 900ms)
+    cubic-bezier(0.22, 0.7, 0.25, 1) forwards;
+}
+
+@keyframes dollar-cursor-particle {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0)
+      rotate(var(--dollar-start-rotation, 0deg)) scale(0.72);
+  }
+
+  14% {
+    opacity: var(--dollar-opacity, 0.36);
+  }
+
+  68% {
+    opacity: var(--dollar-mid-opacity, 0.26);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--dollar-drift-x, 0px)),
+        calc(-50% + var(--dollar-drift-y, -24px)),
+        0
+      )
+      rotate(var(--dollar-end-rotation, 10deg))
+      scale(var(--dollar-end-scale, 1));
+  }
+}
+
+@media (max-width: 768px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .dollar-cursor-trail {
+    display: none;
+  }
+}
