@@ -23,6 +23,14 @@ test('free audit scope separates opportunity assessment from paid implementation
   assert.match(html, /provided as part of paid implementation/i);
 });
 
+test('paid implementation is scope-based and does not advertise a flat service price', () => {
+  assert.match(html, /id="next-steps"/);
+  assert.match(html, /does not publish a one-size-fits-all implementation price/i);
+  assert.match(html, /custom proposal based on the actual scope/i);
+  assert.match(html, /No obligation to purchase implementation help/i);
+  assert.doesNotMatch(html, /\$1,500 USD|id="pricing"|single-business-audit-checkout/i);
+});
+
 test('all prominent free-audit CTAs lead to the contact form', () => {
   const ctas = [...html.matchAll(/<a[^>]+href="([^"]+)"[^>]*>\s*Get Your Free(?: AI Visibility)? Audit\s*<\/a>/g)];
   assert.ok(ctas.length >= 5);
