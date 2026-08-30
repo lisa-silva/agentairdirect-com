@@ -5,72 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Run a free AI Search Visibility Audit and receive a polished visual PDF with your current score, modeled opportunity, verified strengths, and optional revenue estimate.">
 <meta name="color-scheme" content="light" />
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Agent Air Direct",
-    "url": "https://agentairdirect.com",
-    "description": "Agent Air Direct is an AI Search Visibility platform helping businesses optimize for AI answer engines.",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "author": {
-      "@type": "Person",
-      "name": "Lisa Silva"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Agent Air Direct",
-    "url": "https://agentairdirect.com",
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61590209473848"
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "http://schema.org/Monday",
-          "http://schema.org/Tuesday",
-          "http://schema.org/Wednesday",
-          "http://schema.org/Thursday",
-          "http://schema.org/Friday"
-        ],
-        "opens": "10:00",
-        "closes": "17:00"
-      }
-    ]
-  }
-]
-</script>
-<!-- ① SoftwareApplication Schema — AgentAir --> 
+<!-- Core website entities -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Agent Air Direct",
-  "url": "https://agentairdirect.com",
-  "description": "Agent Air Direct offers a free, high-level AI Search Visibility Audit and paid implementation services that turn verified, owner-approved information into AI-optimized profiles and machine-readable outputs.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "author": {
-    "@type": "Person",
-    "name": "Lisa Silva"
-  },
-  "dateModified": "2026-08-08",
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61590209473848"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://agentairdirect.com/#organization",
+      "name": "Agent Air Direct",
+      "url": "https://agentairdirect.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://agentairdirect.com/assets/agent-air-direct-logo.png"
+      },
+      "description": "Agent Air Direct helps businesses improve how they are found, understood, cited, and represented across AI-powered search by building verified, structured, owner-controlled business intelligence.",
+      "founder": {
+        "@type": "Person",
+        "@id": "https://agentairdirect.com/#lisa-silva",
+        "name": "Lisa Silva"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/agentairdirect",
+        "https://www.facebook.com/profile.php?id=61590209473848"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agentairdirect.com/#website",
+      "url": "https://agentairdirect.com/",
+      "name": "Agent Air Direct",
+      "publisher": {
+        "@id": "https://agentairdirect.com/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agentairdirect.com/#webpage",
+      "url": "https://agentairdirect.com/",
+      "name": "Agent Air Direct™ | AI Search Visibility & Business Intelligence",
+      "description": "Run a free AI Search Visibility Audit and receive a polished visual PDF with your current score, modeled opportunity, verified strengths, and optional revenue estimate.",
+      "isPartOf": {
+        "@id": "https://agentairdirect.com/#website"
+      },
+      "about": {
+        "@id": "https://agentairdirect.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://agentairdirect.com/#ai-search-visibility-audit"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://agentairdirect.com/#application",
+      "name": "Agent Air Direct",
+      "url": "https://agentairdirect.com/",
+      "description": "Agent Air Direct offers a free, high-level AI Search Visibility Audit and paid implementation services that turn verified, owner-approved information into AI-optimized profiles and machine-readable outputs.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "author": {
+        "@id": "https://agentairdirect.com/#organization"
+      },
+      "dateModified": "2026-08-08"
+    }
   ]
 }
 </script>
-
 <!-- ② FAQPage Schema — AgentAir -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://agentairdirect.com/#faq",
+  "url": "https://agentairdirect.com/#faq-q7r8",
+  "isPartOf": {
+    "@id": "https://agentairdirect.com/#website"
+  },
   "mainEntity": [
     {
       "@type": "Question",
@@ -148,35 +160,6 @@
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Agent Air Direct",
-  "url": "https://www.agentairdirect.com",
-  "logo": "https://www.agentairdirect.com/assets/agent-air-direct-logo.png",
-  "description": "Agent Air Direct helps businesses improve how they are found, understood, cited, and represented across AI-powered search by building verified, structured, owner-controlled business intelligence.",
-  "sameAs": [
-    "https://www.linkedin.com/company/agentairdirect",
-    "https://www.facebook.com/profile.php?id=61590209473848"
-  ],
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
-      "opens": "10:00",
-      "closes": "17:00"
-    }
-  ]
-}
-</script>
-
 <!-- ③ Open Graph Tags -->
 <!-- Service Schema — Free AI Search Visibility Audit -->
 <script type="application/ld+json">
@@ -189,10 +172,7 @@
   "url": "https://agentairdirect.com/#free-audit",
   "serviceType": "AI Search Visibility Audit",
   "provider": {
-    "@type": "Organization",
-    "@id": "https://agentairdirect.com/#organization",
-    "name": "Agent Air Direct",
-    "url": "https://agentairdirect.com/"
+    "@id": "https://agentairdirect.com/#organization"
   },
   "description": "A free, high-level AI search visibility assessment delivered as a visual PDF showing the business's current visibility score, modeled opportunity, optimization opportunity count, and verified strengths.",
   "offers": {
