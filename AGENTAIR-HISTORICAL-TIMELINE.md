@@ -6,7 +6,7 @@
 
 ## The short version
 
-AgentAir did not begin as a conventional SEO product. It began as an attempt to make verified local-business facts easier for machines to parse and recommend. The business model changed repeatedly—from paid directory listings, to direct contractor service, to audit and schema tools, to a white-label agency suite, and finally to the present AgentAirDirect engine—but one useful operating model survived:
+AgentAir did not begin as a conventional SEO product. It began as an attempt to make verified local-business facts easier for machines to parse and recommend. The business model changed repeatedly—from paid directory listings, to direct contractor service, to audit and schema tools, to a white-label agency suite, and finally to the present Agent Air Direct engine—but one useful operating model survived:
 
 > Collect verified business facts → diagnose representation gaps → generate safe corrections → translate findings into plain language → package the work for action and sale → measure the result.
 
@@ -32,12 +32,12 @@ That is the real historical through-line and the strongest intellectual asset in
 
 **Evidence:** `agentair.io/agentair.io/index.html` and its Git commits dated February 11-19.
 
-### February 15-22 — Contractor-first sales experiments and AgentAir Direct
+### February 15-22 — Contractor-first sales experiments and Agent Air Direct
 
 - Personalized roofing and emergency-trade demonstrations were created around San Jose-area contractors.
 - The “Flight Manifest,” “Secure Coordinates,” comparison tables, verified identities, and featured partner positions were sales experiments designed to make machine-readable facts visible to prospective clients.
 - On February 22 a separate `agent-air-direct` landing page explicitly targeted local contractors, plumbers, and roofers.
-- This is the first clear split between a broader AgentAir concept and a contractor-facing AgentAir Direct lane.
+- This is the first clear split between a broader AgentAir concept and a contractor-facing Agent Air Direct lane.
 
 **Evidence:** `agent_air_direct/Agent Air Direct Personalized Demo.txt`, `(Start Recording - Open index.html.txt`, `agent_air_direct_index_schema_all_task_files.md`, and `agent-air-direct/agent-air-direct/index.html`.
 
@@ -99,10 +99,10 @@ That is the real historical through-line and the strongest intellectual asset in
 
 **Evidence:** `agentair-io/index[A].html` and `agentair-io/agentair.io index.html.saved before.txt`.
 
-### May 23-June 5 — Consolidation under AgentAirDirect
+### May 23-June 5 — Consolidation under Agent Air Direct
 
 - The current website repository begins May 23.
-- AgentAirDirect branding expands across the suite and public site.
+- Agent Air Direct branding expands across the suite and public site.
 - The contractor-facing presentation becomes the main public identity, while agency capabilities remain in the underlying product.
 - A June 4 Intelligence Hub was briefly introduced and then removed later in June.
 
@@ -132,7 +132,7 @@ That is the real historical through-line and the strongest intellectual asset in
 - Personas expand to cleaning services and other business categories.
 - Cross-module audit integrity, saved identity, GEO persistence, and schema draft safety continue to improve.
 - The MD Spangler work becomes the clearest archived example of applying the system to a real contractor: verified business identity, corrected facts and hours, schema, a client landing page, evidence reports, client-result packages, and case-study reporting.
-- By the present date, AgentAirDirect is best understood as a website and business-representation audit, remediation, reporting, and evidence system—not a guaranteed AI-ranking machine.
+- By the present date, Agent Air Direct is best understood as a website and business-representation audit, remediation, reporting, and evidence system—not a guaranteed AI-ranking machine.
 
 **Evidence:** `md-spangler-landing-page`, `agentair-suite/output/case-studies/md-spangler`, and August Git history.
 
@@ -142,7 +142,7 @@ That is the real historical through-line and the strongest intellectual asset in
 Agent Air local-service infrastructure
 ├── AI-readable directory and permanent listing offer
 │   ├── Flight Manifest / verified contractor experiments
-│   └── AgentAir Direct contractor landing page
+│   └── Agent Air Direct contractor landing page
 ├── Website visibility audit
 │   ├── Scoring and recommendations
 │   ├── Saved history and PDF reports
@@ -161,7 +161,7 @@ Agent Air local-service infrastructure
 │   └── restaurant ordering and local conversion actions
 ├── Lisa agent concept
 │   └── API-native or embedded AEO/GEO specialist
-└── AgentAirDirect today
+└── Agent Air Direct today
     ├── Signal Audit
     ├── Schema Intelligence / Fix Kit
     ├── identity and platform profile tooling
@@ -229,7 +229,7 @@ The MD Spangler materials show the safest route to credibility: document the ini
 
 The original split remains useful:
 
-- **AgentAirDirect:** implementation and outcomes for individual businesses.
+- **Agent Air Direct:** implementation and outcomes for individual businesses.
 - **AgentAir.io:** tools and operating infrastructure for agencies or partners.
 
 The two lanes can share one engine without sharing the same landing-page message.
@@ -248,13 +248,13 @@ The two lanes can share one engine without sharing the same landing-page message
 
 ## Recommended historical narrative
 
-> AgentAir began in February 2026 as an experiment in making verified local-business information easier for machines to understand. That directory concept quickly exposed a larger problem: most businesses did not have a consistent, evidence-backed digital representation across their websites and public profiles. AgentAir evolved from listings into a website audit, then into schema remediation, client reporting, agency workflows, local-discovery analysis, and implementation evidence. Today, AgentAirDirect helps businesses identify representation gaps, organize verified facts, implement safe machine-readable improvements, and document what changed—without claiming that any single technical fix guarantees placement in AI-generated answers.
+> AgentAir began in February 2026 as an experiment in making verified local-business information easier for machines to understand. That directory concept quickly exposed a larger problem: most businesses did not have a consistent, evidence-backed digital representation across their websites and public profiles. AgentAir evolved from listings into a website audit, then into schema remediation, client reporting, agency workflows, local-discovery analysis, and implementation evidence. Today, Agent Air Direct helps businesses identify representation gaps, organize verified facts, implement safe machine-readable improvements, and document what changed—without claiming that any single technical fix guarantees placement in AI-generated answers.
 
 ## Recommended next decisions
 
 1. Preserve both domains, but do not republish the old agency page unchanged.
 2. Define the durable product around a **Verified Business Evidence Record** plus audit-to-fix traceability.
-3. Keep AgentAirDirect as the individual-business implementation lane.
+3. Keep Agent Air Direct as the individual-business implementation lane.
 4. Reintroduce AgentAir.io only when the agency package has clearly defined access, outputs, support, pricing, and operational capacity.
 5. Treat Lisa as a future interface or agent over the verified evidence system—not as a separate claim-heavy product.
 6. Replace invented market statistics with first-party aggregate audit data, clearly describing sample size, date range, and methodology.
