@@ -1,5 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
+/* Homepage client proof stays in normal flow on every viewport. */
+.client-results { padding: 2rem 1rem 4rem; }
+.client-results-card { max-width: 76rem; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid #c7b7de; border-radius: 1.5rem; background: linear-gradient(120deg, #fff, #f0eafa); box-shadow: 0 18px 48px rgba(80, 56, 140, .13); }
+.client-results-copy, .client-results-proof { min-width: 0; }
+.client-results-card p { color: #34264b; line-height: 1.65; margin: 0 0 1rem; }
+.client-results-card .client-results-kicker { color: #087488; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.client-results-card h2 { color: #35145f !important; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.2; margin: 0 0 .5rem; text-shadow: none; }
+.client-results-location { font-weight: 600; }
+.client-results-proof { align-self: center; padding: 1.5rem; background: #fff; border: 1px solid #d9d7e8; border-radius: 1rem; }
+.client-results-card .client-results-score { color: #35145f; font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 900; line-height: 1.2; white-space: nowrap; }
+.client-results-score span { color: #087488; }
+.client-results-card .client-results-note { font-size: .8125rem; margin-bottom: 0; }
+.client-results-cta { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 48px; padding: .85rem 1.4rem; border-radius: .6rem; background: #35145f; color: #fff !important; font-weight: 700; text-align: center; }
+.client-results-cta:hover { background: #502781; }
+.client-results-cta:focus-visible { outline: 3px solid #087488; outline-offset: 4px; }
+@media (max-width: 800px) {
+  .client-results-card { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .client-results-cta { width: 100%; }
+  .client-results-proof { padding: 1rem; }
+}
+
 /* 2031 Cognitive Luminescence global theme */
 :root {
   --spectral-mist: #EDEBFA;
