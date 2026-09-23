@@ -1,9 +1,20 @@
-const fs=require('node:fs'),path=require('node:path'),root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
-const auditDestination='#contact';
-for(const marker of ['id="free-audit"','id="contact"','id="roi-calculator"','assets/roi-calculator.css','assets/roi-calculator.js','assets/roi-calculator-ui.js','assets/dollar-cursor-trail.css','assets/dollar-cursor-trail.js',`href="${auditDestination}"`,`action="https://formsubmit.co/hello@agentair.io"`,`value="New Free AI Visibility Audit Request"`,`href="/case-study-md-spangler"`])if(!html.includes(marker))throw new Error(`Production page is missing ${marker}`);
-if(!fs.existsSync(path.join(root,'case-study-md-spangler.html')))throw new Error('Missing public case-study page.');
-if(/streamlit\.app/i.test(html))throw new Error('Production page must not link to the private Streamlit application.');
-for(const relative of ['assets/roi-calculator.css','assets/roi-calculator.js','assets/roi-calculator-ui.js','assets/dollar-cursor-trail.css','assets/dollar-cursor-trail.js'])if(!fs.existsSync(path.join(root,relative)))throw new Error(`Missing production asset: ${relative}`);
-const publicFiles=fs.readdirSync(root).filter(name=>name.endsWith('.html')).map(name=>path.join(root,name)).concat(fs.readdirSync(path.join(root,'assets')).filter(name=>/\.(css|js)$/.test(name)).map(name=>path.join(root,'assets',name)));
-for(const file of publicFiles){const contents=fs.readFileSync(file,'utf8');for(const pattern of [/localhost:\d+/i,/127\.0\.0\.1:\d+/i,/audit payload/i])if(pattern.test(contents))throw new Error(`Prohibited private reference found in ${path.relative(root,file)}: ${pattern}`);}
+const fs = require('node:fs'), path = require('node:path');
+const root = path.resolve(__dirname, '..');
+for (const page of fs.readdirSync(root).filter(name => name.endsWith('.html'))) {
+ const html = fs.readFileSync(path.join(root, page), 'utf8');
+ for (const pattern of [/free\s+(?:AI\s+Search\s+Visibility\s+|AI\s+Visibility\s+)?audit/i, /localhost:\d+/i, /127\.0\.0\.1:\d+/i, /audit payload/i, /streamlit\.app/i]) {
+  if (pattern.test(html)) throw new Error(`Prohibited public copy in ${page}: ${pattern}`);
+ }
+ for (const match of html.matchAll(/(?:href|src)="([^"?#]+)(?:[?#][^"]*)?"/g)) {
+  if (/^(?:https?:|mailto:|tel:|data:)/.test(match[1])) continue;
+  const local = path.join(root, match[1] === '/' ? 'index.html' : match[1].replace(/^\//, ''));
+  if (!fs.existsSync(local) && !fs.existsSync(local + '.html')) throw new Error(`Missing local target ${match[1]} in ${page}`);
+ }
+ for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(match[1]);
+}
+for (const page of ['business-signal-intelligence.html','ai-speed-to-lead.html','contact.html']) {
+ if (!fs.existsSync(path.join(root,page))) throw new Error(`Missing service page ${page}`);
+}
+const home = fs.readFileSync(path.join(root,'index.html'),'utf8');
+if ((home.match(/<section\b/g) || []).length !== 8) throw new Error('Homepage must have eight sections.');
 console.log('Static production build verification passed.');
