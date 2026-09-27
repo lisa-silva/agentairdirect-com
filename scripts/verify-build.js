@@ -18,4 +18,15 @@ for (const page of ['business-signal-intelligence.html','ai-speed-to-lead.html',
 const home = fs.readFileSync(path.join(root,'index.html'),'utf8');
 if ((home.match(/<section\b/g) || []).length !== 9) throw new Error('Homepage must have nine sections.');
 if (!/<section id="hero-k1l2"[\s\S]*?<div class="signal-wrap">\s*<h1>Your website was built for one audience\.<br>Now it has two\.<\/h1>\s*<p class="signal-lede">People who read it and machines that interpret it\.<\/p>/.test(home)) throw new Error('Homepage hero copy or ordering changed.');
+if (!/<section id="customer-pain"[\s\S]*?<img src="\/assets\/futuristic_tech_network_visualization\.png"[^>]+alt="Scattered business information becoming a connected foundation for search and AI systems\."/.test(home)) throw new Error('Missing fragmented information visual in the customer problem section.');
+for (const [section,file] of [['business-signal-intelligence','Media business signal graphic.png'],['diagnostic','bs_diagnostic_overview_graphic.png'],['speed-to-lead','ava_overview_graphic.png']]) {
+ if (!new RegExp(`<section id="${section}"[\\s\\S]*?<img src="/assets/${file.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}"`).test(home)) throw new Error(`Missing ${file} from ${section}.`);
+}
+const limitation = /Agent Air Direct provides consulting, implementation, and workflow support[\s\S]*?We do not guarantee search rankings, AI citations, recommendations, leads, revenue, platform placement, or regulatory compliance\./;
+for (const page of ['index.html','contact.html','business-signal-intelligence.html','ai-speed-to-lead.html','case-study-md-spangler.html','success-agentairdirect.html']) {
+ if (limitation.test(fs.readFileSync(path.join(root,page),'utf8'))) throw new Error(`Service limitations must not appear on public service page ${page}.`);
+}
+for (const page of ['privacypolicy.html','terms.html','refund.html','disclaimer.html']) {
+ if (!limitation.test(fs.readFileSync(path.join(root,page),'utf8'))) throw new Error(`Missing service limitations on policy page ${page}.`);
+}
 console.log('Static production build verification passed.');
