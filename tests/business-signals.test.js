@@ -6,9 +6,10 @@ const root = path.resolve(__dirname,'..');
 const read = name => fs.readFileSync(path.join(root,name),'utf8');
 const home = read('index.html');
 const contact = read('contact.html');
-test('homepage has eight ordered sections and one main heading', () => {
-  assert.deepEqual([...home.matchAll(/<section id="([^"]+)"/g)].map(x=>x[1]), ['hero-k1l2','customer-pain','business-signal-intelligence','diagnostic','foundation','speed-to-lead','stewardship','final-cta']);
+test('homepage has nine ordered sections and one main heading', () => {
+  assert.deepEqual([...home.matchAll(/<section id="([^"]+)"/g)].map(x=>x[1]), ['hero-k1l2','two-audiences','customer-pain','business-signal-intelligence','diagnostic','foundation','speed-to-lead','stewardship','final-cta']);
   assert.equal((home.match(/<h1>/g)||[]).length,1);
+  assert.match(home, /<section id="hero-k1l2"[\s\S]*?<div class="signal-wrap">\s*<h1>Your website was built for one audience\.<br>Now it has two\.<\/h1>\s*<p class="signal-lede">People who read it and machines that interpret it\.<\/p>/);
   assert.doesNotMatch(home, /SoftwareApplication|FAQPage|roi-calculator/);
 });
 test('public pages contain no free audit offer or private application link', () => {

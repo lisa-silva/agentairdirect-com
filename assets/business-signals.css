@@ -18,6 +18,8 @@
 .signal-section h2 { font-size: clamp(1.8rem, 3.1vw, 2.8rem); max-width: 920px; font-weight: 800; }
 .signal-section h3 { font-size: 1.4rem; margin-block: 18px 12px; }
 .signal-section p { max-width: 850px; color: #34264b; font-size: 17px; line-height: 1.75; margin: 0 0 20px; }
+.signal-section .signal-lede { color: #35145f; font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: 700; line-height: 1.5; }
+.signal-section .signal-emphasis { color: #35145f; font-weight: 800; }
 .signal-section .signal-kicker { color: #087488; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
 .signal-actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 22px; }
 .signal-button { display: inline-flex; justify-content: center; align-items: center; min-height: 50px; max-width: 100%; padding: 15px 22px; border-radius: 9px; background: #35145f; border: 1px solid #35145f; color: white !important; font: 700 15px/1.5 Inter,sans-serif; text-align: center; text-decoration: none; cursor: pointer; box-shadow: 0 6px 20px rgba(80,56,140,.12); white-space: normal; }
@@ -27,6 +29,7 @@
 .signal-skip { position: fixed; top: -100px; left: 12px; z-index: 100; background: white; color: #35145f; padding: 12px; }
 .signal-skip:focus { top: 12px; }
 .signal-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin: 32px 0; }
+.signal-grid.signal-grid-two { grid-template-columns: repeat(2,1fr); max-width: 880px; }
 .signal-card { background: var(--glass-strong); border: 1px solid #c7b7de; padding: 26px; border-radius: 18px; box-shadow: var(--shadow-soft); min-width: 0; }
 .signal-card p { font-size: 15px; margin-bottom: 0; }
 .signal-number { color: #087488; font-weight: 800; }
@@ -63,7 +66,7 @@
   .signal-brand { font-size: 16px; gap: 6px; }
   .signal-brand img { width: 32px; height: 32px; }
   .signal-wrap { width: calc(100% - 32px); }
-  .signal-grid, .signal-form-grid { grid-template-columns: 1fr; }
+  .signal-grid, .signal-grid.signal-grid-two, .signal-form-grid { grid-template-columns: 1fr; }
   .signal-button { width: 100%; }
   .signal-section p, .signal-list li { font-size: 16px; }
   .signal-footer nav { gap: 16px; }
