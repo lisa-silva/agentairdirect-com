@@ -29,7 +29,7 @@ test('public pages contain no free audit offer or private application link', () 
   for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) assert.doesNotMatch(read(file), /free\s+(?:AI\s+Search\s+Visibility\s+|AI\s+Visibility\s+)?audit|streamlit\.app/i,file);
 });
 test('inquiry preserves FormSubmit and requires qualification and consent with optional website', () => {
-  assert.match(contact,/action="https:\/\/formsubmit\.co\/hello@agentair\.io" method="POST"/);
+  assert.match(contact,/action="https:\/\/formsubmit\.co\/lisa@agentairdirect\.com" method="POST"/);
   for (const name of ['name','business','email','phone','city_state','industry','locations','goals','service','investment','message','paid_confirmation']) assert.match(contact,new RegExp(`<(?:input|textarea|select)[^>]*name="${name}"[^>]*required`));
   assert.doesNotMatch(contact,/<input[^>]*name="website"[^>]*required/);
   assert.match(contact,/name="_honey" hidden/);

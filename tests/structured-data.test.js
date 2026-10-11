@@ -46,6 +46,6 @@ test('contact page identifies the inquiry destination without inventing business
   const nodes = entities('contact.html');
   assert.ok(nodes.some(node => node['@type'] === 'ContactPage'));
   const organization = nodes.find(node => node['@type'] === 'Organization');
-  assert.equal(organization.contactPoint.email, 'hello@agentair.io');
+  assert.equal(organization.contactPoint.email, 'lisa@agentairdirect.com');
   for (const property of ['address', 'telephone', 'aggregateRating', 'review']) assert.equal(organization[property], undefined);
 });
