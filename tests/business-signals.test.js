@@ -6,23 +6,27 @@ const root = path.resolve(__dirname,'..');
 const read = name => fs.readFileSync(path.join(root,name),'utf8');
 const home = read('index.html');
 const contact = read('contact.html');
-test('homepage has nine ordered sections and one main heading', () => {
-  assert.deepEqual([...home.matchAll(/<section id="([^"]+)"/g)].map(x=>x[1]), ['hero-k1l2','two-audiences','customer-pain','business-signal-intelligence','diagnostic','foundation','speed-to-lead','stewardship','final-cta']);
+test('homepage has its ordered sections and one main heading', () => {
+  assert.deepEqual([...home.matchAll(/<section id="([^"]+)"/g)].map(x=>x[1]), ['hero','why-now','what-you-get','how-it-works','plain-english','pricing-intelligence','pricing','done-for-you','agencies','sample','faq','final-cta']);
   assert.equal((home.match(/<h1>/g)||[]).length,1);
-  assert.match(home, /<section id="hero-k1l2"[\s\S]*?<div class="signal-wrap">\s*<h1>Your website was built for one audience\.<br>Now it has two\.<\/h1>\s*<p class="signal-lede">People who read it and machines that interpret it\.<\/p>/);
+  assert.match(home, /<section id="hero"[\s\S]*?<h1>AI can only choose a business it can <span class="home-accent">read<\/span>\.<\/h1>/);
   assert.doesNotMatch(home, /SoftwareApplication|FAQPage|roi-calculator/);
 });
-test('fragmented information visual appears in the customer problem section', () => {
-  assert.match(home, /<section id="customer-pain"[\s\S]*?<figure class="signal-fragmented-visual"><img src="\/assets\/futuristic_tech_network_visualization\.png"[^>]+alt="Scattered business information becoming a connected foundation for search and AI systems\."[^>]*><\/figure>[\s\S]*?<h3>Important facts are scattered<\/h3>/);
+test('homepage states prices, the legibility promise and Pricing Intelligence', () => {
+  for (const id of ['diagnostic','foundation','stewardship']) assert.match(home, new RegExp(`<article class="signal-card home-plan[^"]*" id="${id}"`));
+  assert.match(home, /\$750 <small>starting<\/small>[\s\S]*\$2,500 <small>starting, one-time<\/small>[\s\S]*\$500 <small>starting, per month<\/small>/);
+  assert.match(home, /No one can make AI choose you\. We make sure AI can see you, read you correctly, and has every reason to choose you\./);
+  assert.match(home, /<section id="pricing-intelligence"[\s\S]*?Pricing Passport/);
+  assert.doesNotMatch(home, /™|invisible|guarantee/i);
 });
-test('service overview visuals appear in their matching homepage sections', () => {
+test('site visuals appear in their matching homepage sections', () => {
   const placements = [
-    ['business-signal-intelligence','Media business signal graphic.png','Seven connected parts of Business Signal Intelligence'],
-    ['diagnostic','bs_diagnostic_overview_graphic.png','Business Signal Diagnostic overview'],
-    ['speed-to-lead','ava_overview_graphic.png','AVA workflow'],
+    ['why-now','futuristic_tech_network_visualization.png','Scattered business information'],
+    ['what-you-get','Media business signal graphic.png','Seven connected parts of Business Signal Intelligence'],
+    ['sample','bs_diagnostic_overview_graphic.png','Business Signal Diagnostic overview'],
   ];
   for (const [section,file,altStart] of placements) {
-    assert.match(home,new RegExp(`<section id="${section}"[\\s\\S]*?<figure class="signal-section-visual"><img src="/assets/${file.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}"[^>]+alt="${altStart}`));
+    assert.match(home,new RegExp(`<section id="${section}"[\\s\\S]*?<img src="/assets/${file.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}"[^>]+alt="${altStart}`));
   }
 });
 test('public pages contain no free audit offer or private application link', () => {
